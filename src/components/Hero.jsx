@@ -5,7 +5,7 @@ export default function Hero() {
     <div className="min-h-screen flex flex-col gap-10 items-center justify-center text-center">
       <div className="flex flex-col gap-4 max-w-[900px] w-full mx-auto p-4">
         <p>IT'S TIME TO GET</p>
-        <h1 className="uppercase font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
+        <h1 className="uppercase font-semibold text-4xl sm:text-6xl md:text-7xl lg:text-8xl">
           Swole<span className="text-blue-400">normous</span>
         </h1>
       </div>
