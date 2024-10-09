@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import SectionWrapper from "./SectionWrapper";
 import { SCHEMES, WORKOUTS } from "../utils/swoilder";
+import Button from "./Button";
+import { generateWorkout } from "../utils/functions";
 
 function Header(props) {
   const { index, title, description } = props;
@@ -17,11 +19,18 @@ function Header(props) {
   );
 }
 
-export default function Generator() {
+export default function Generator(props) {
+  const {
+    muscles,
+    setMuscles,
+    poison,
+    setPoison,
+    goal,
+    setGoal,
+    updateWorkout,
+  } = props;
   const [showModal, setShowModal] = useState(false);
-  const [poison, setPoison] = useState("individual");
-  const [muscles, setMuscles] = useState([]);
-  const [goal, setGoal] = useState("strength_power");
+
   function toggleModal() {
     setShowModal(!showModal);
   }
@@ -48,6 +57,7 @@ export default function Generator() {
   }
   return (
     <SectionWrapper
+      id={"generate"}
       header={"generate your workout"}
       title={["It's", "Huge", "o'clock"]}
     >
@@ -62,9 +72,10 @@ export default function Generator() {
             <button
               onClick={() => {
                 setPoison(type);
+                setMuscles([]);
               }}
               className={
-                "bg-slate-950 border  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg " +
+                "bg-slate-950 border px-4  duration-200 px-4 hover:border-blue-600 py-3 rounded-lg " +
                 (type === poison ? " border-blue-600" : " border-blue-400")
               }
               key={typeIndex}
@@ -79,7 +90,7 @@ export default function Generator() {
         title={"Lock on targets"}
         description={"Select the muscles judged for annihilation."}
       />
-      <div className="bg-slate-950  border border-solid border-blue-400 rounded-lg flex flex-col">
+      <div className="bg-slate-950 px-4  border border-solid border-blue-400 rounded-lg flex flex-col">
         <button
           onClick={toggleModal}
           className="relative p-3 flex items-center justify-center"
@@ -120,7 +131,7 @@ export default function Generator() {
         title={"Become juggernaut"}
         description={"Select your ultimate objective"}
       />
-      <div className="grid grid-cols-3  gap-4">
+      <div className="grid grid-cols-1  sm:grid-cols-3  gap-4">
         {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
           return (
             <button
@@ -138,6 +149,7 @@ export default function Generator() {
           );
         })}
       </div>
+      <Button func={updateWorkout} text={"Formulate"}></Button>
     </SectionWrapper>
   );
 }
