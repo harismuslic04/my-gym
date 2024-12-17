@@ -7,11 +7,88 @@
   height: 100vh;
   width: 100%;
   background-color: rgb(39, 38, 38);
+  display: flex;
+  flex-direction: column;
 }
 .header {
   display: flex;
-  justify-content: space-around;
-  height: 2rem;
+  justify-content: space-between;
+  height: 7rem;
   position: relative;
-  top: 3rem;
+  top: 0rem;
+  width: 100%;
+  align-items: center;
+}
+.left {
+  position: relative;
+  left: 9rem;
+}
+.header button {
+  right: 9rem;
+  position: relative;
+  border: 1px solid;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 30px;
+}
+.info {
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+  border-radius: 20px;
+  height: 4rem;
+  margin: 0 auto 0 auto;
+  background-color: rgb(92, 91, 91);
+}
+.stats {
+  background-color: rgb(92, 91, 91);
+  width: 50%;
+  height: 25rem;
+  position: relative;
+  top: 2rem;
+  left: 9em;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.stats h1 {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+.sets {
+  height: 80%;
+  position: relative;
+  top: 20%;
+  border-radius: 0 0 0 30px;
+}
+.muscles {
+  height: 80%;
+  position: relative;
+  top: 20%;
+  border-left: 1px solid rgb(44, 42, 42);
+  border-right: 1px solid rgb(44, 42, 42);
+}
+.calories {
+  height: 80%;
+  position: relative;
+  top: 20%;
+  border-radius: 0 0 30px;
+}
+.calories2 {
+  position: relative;
+  left: 1rem;
+}
+.calories h1 {
+  position: absolute;
+  top: 12rem;
+  left: 3.3rem;
+}
+.calories p {
+  position: relative;
+  left: 5.2rem;
+  top: 1rem;
+  font-size: 2rem;
 }
