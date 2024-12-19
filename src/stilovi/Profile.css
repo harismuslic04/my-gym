@@ -70,36 +70,44 @@
 .sets {
   height: 80%;
   position: relative;
-  top: 20%;
+  top: 15%;
   border-radius: 0 0 0 30px;
 }
 .muscles {
   height: 80%;
+
   position: relative;
   top: 20%;
+
   border-left: 1px solid rgb(44, 42, 42);
   border-right: 1px solid rgb(44, 42, 42);
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 .calories {
   height: 80%;
   position: relative;
   top: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 0 0 30px;
 }
 .calories2 {
   position: relative;
-  left: 2rem;
+  top: 1.3rem;
 }
 .calories h1 {
-  position: absolute;
-  top: 12rem;
-  left: 4.5rem;
+  position: relative;
+  top: -0.2rem;
+  font-size: 20px;
+  left: 0;
 }
 .calories p {
   position: relative;
-  left: 6.7rem;
-  top: 1rem;
-  font-size: 2rem;
+  top: 0rem;
+  font-size: 30px;
 }
 .calendar2 {
   height: 25rem;
@@ -113,4 +121,16 @@
 .undercalendar {
   position: relative;
   top: 2rem;
+}
+.muscles2 {
+  /* background-color: red; */
+  height: 80%;
+
+  position: relative;
+  top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  width: 100%;
 }

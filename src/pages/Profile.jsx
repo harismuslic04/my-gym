@@ -9,88 +9,98 @@ import {
   GaugeReferenceArc,
   useGaugeState,
 } from "@mui/x-charts/Gauge";
-
-import { PieChart } from "@mui/x-charts/PieChart";
+import { Chart } from "react-google-charts";
+// import { PieChart } from "@mui/x-charts/PieChart";
 import { desktopOS, valueFormatter } from "../components/webUsageStats";
 
 import { BarChart } from "@mui/x-charts/BarChart";
-
+import "rsuite/dist/rsuite-no-reset.min.css";
+import { PieChart } from "@rsuite/charts";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import { isOverflowing } from "rsuite/esm/DOMHelper";
+export const data = [
+  ["Language", "Speakers (in millions)"],
+  ["Chest", 5.85],
+  ["Shoulder", 1.66],
+  ["Biceps", 1.316],
+];
 
-export function BasicPie() {
-  const data = [
-    { id: 0, value: 10, label: "series A", color: "#FF5733" },
-    { id: 1, value: 15, label: "series B", color: "#33FF57" },
-    { id: 2, value: 20, label: "series C", color: "#3357FF" },
-  ];
+export const options = {
+  legend: "none",
+  pieSliceText: "label",
 
+  pieStartAngle: 100,
+  backgroundColor: "transparent",
+  pieSliceBorderColor: "transparent",
+  slices: {
+    0: { color: "#8E44AD" }, // Lila boja za prvi deo
+    1: { color: "#3498DB" }, // Plava boja za drugi deo
+    2: { color: "#1ABC9C" }, // Teal (plavi zeleni) za treći deo
+    3: { color: "#F39C12" }, // Žuta za četvrti deo (Romansh)
+  },
+  chartArea: {
+    width: "70%", // Širina prostora za krug
+    height: "70%", // Visina prostora za krug
+  },
+};
+
+export function Chart2() {
   return (
-    <div style={{ position: "relative", width: "250px", height: "200px" }}>
-      {/* PieChart bez legende */}
-      <PieChart
-        sx={{
-          // Ako želite da sakrijete legendu u CSS-u
-          "& .MuiPieChart-legend": {
-            display: "none", // Ovo će sakriti legendu
-          },
-        }}
-        series={[
-          {
-            data: data,
-          },
-        ]}
-        width={250}
-        height={200}
-      />
-
-      {/* Prikazivanje legende ispod grafikona */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: "-30px", // Pomeranje legende malo niže
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-        }}
-      >
-        {data.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              marginRight: "10px",
-              color: item.color,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            {/* Kutija sa bojom */}
-            <span
-              style={{
-                backgroundColor: item.color,
-                width: "10px",
-                height: "10px",
-                marginRight: "5px",
-                borderRadius: "50%",
-              }}
-            />
-            {/* Naziv serije */}
-            <span>{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Chart
+      chartType="PieChart"
+      data={data}
+      options={options}
+      width={"100%"}
+      height={"100%"}
+    />
   );
 }
+// export function Pie() {
+//   // Sample data
+//   const sampleData = [
+//     ["Books", 10],
+//     ["Cars", 20],
+//     ["Table", 50],
+//   ];
 
+//   return (
+//     <div className="krug">
+//       <h4></h4>
+//       <PieChart name="PieChart" data={sampleData} />
+//     </div>
+//   );
+// }
+export function BasicPie() {
+  return (
+    <PieChart
+      series={[
+        {
+          data: [
+            { id: 0, value: 10, label: "series A" },
+            { id: 1, value: 15, label: "series B" },
+            { id: 2, value: 20, label: "series C" },
+          ],
+        },
+      ]}
+      width={230}
+      height={200}
+    />
+  );
+}
 const today = dayjs().format("YYYY-MM-DD");
 export function BasicDateCalendar() {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date); // Postavlja novi odabrani datum
+    console.log("Kliknuti datum:", date.format("YYYY-MM-DD")); // Ispisuje datum u konzolu
+  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
+        onChange={handleDateChange}
         sx={{
           // Stilizacija svakog datuma
           "& .MuiPickersDay-root": {
@@ -176,7 +186,7 @@ export function CompositionExample() {
       height={200}
       startAngle={-110}
       endAngle={110}
-      value={30}
+      value={70}
     >
       <GaugeReferenceArc />
       <GaugeValueArc />
@@ -218,7 +228,7 @@ export default function Profile() {
         </div>
         <div className="muscles">
           <div className="muscles2">
-            <BasicPie />
+            <Chart2 />
           </div>
         </div>
         <div className="calories">
