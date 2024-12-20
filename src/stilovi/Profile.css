@@ -6,7 +6,7 @@
 .main {
   height: 100vh;
   width: 100%;
-  background-color: rgb(39, 38, 38);
+  background-color: rgb(228, 227, 227);
   display: flex;
   flex-direction: column;
 }
@@ -41,7 +41,7 @@
   border-radius: 30px;
 }
 .info {
-  color: white;
+  color: black;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -49,10 +49,10 @@
   border-radius: 20px;
   height: 4rem;
   margin: 0 auto 0 auto;
-  background-color: rgb(70, 67, 67);
+  background-color: white;
 }
 .stats {
-  background-color: rgb(70, 67, 67);
+  background-color: white;
   width: 55%;
   height: 25rem;
   position: relative;
@@ -88,7 +88,7 @@
 .calories {
   height: 80%;
   position: relative;
-  top: 20%;
+  top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,14 +123,5 @@
   top: 2rem;
 }
 .muscles2 {
-  /* background-color: red; */
-  height: 80%;
-
-  position: relative;
-  top: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: visible;
   width: 100%;
 }

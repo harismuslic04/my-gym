@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../stilovi/Profile.css";
 import * as React from "react";
 import { pieArcLabelClasses } from "@mui/x-charts/PieChart";
@@ -9,17 +9,122 @@ import {
   GaugeReferenceArc,
   useGaugeState,
 } from "@mui/x-charts/Gauge";
-import { Chart } from "react-google-charts";
+// import { Chart } from "react-google-charts";
 // import { PieChart } from "@mui/x-charts/PieChart";
-import { desktopOS, valueFormatter } from "../components/webUsageStats";
+// import { desktopOS, valueFormatter } from "../components/webUsageStats";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+// import { PieChart } from "@mui/x-charts/PieChart";
+// import { platforms } from "./webUsageStats";
+import { Chart } from "primereact/chart";
 
 import { BarChart } from "@mui/x-charts/BarChart";
 import "rsuite/dist/rsuite-no-reset.min.css";
-import { PieChart } from "@rsuite/charts";
+// import { PieChart } from "@rsuite/charts";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { isOverflowing } from "rsuite/esm/DOMHelper";
+import { PieChart } from "react-minimal-pie-chart";
+import { SIZE } from "rsuite/esm/internals/constants";
+import { color } from "chart.js/helpers";
+
+export function PieChartDemo() {
+  const [chartData, setChartData] = useState({});
+  const [chartOptions, setChartOptions] = useState({});
+
+  useEffect(() => {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const data = {
+      labels: ["Chest", "Biceps", "t"],
+      datasets: [
+        {
+          data: [1, 0, 2],
+        },
+      ],
+    };
+    const options = {
+      plugins: {
+        legend: {
+          labels: {
+            usePointStyle: true,
+            font: {
+              size: 13,
+
+              // weight: "bold", // Deblji font
+              family: "Arial",
+            },
+            color: "black",
+          },
+        },
+      },
+    };
+
+    setChartData(data);
+    setChartOptions(options);
+  }, []);
+
+  return (
+    <div className="">
+      <Chart
+        type="pie"
+        data={chartData}
+        options={chartOptions}
+        style={{
+          width: "95%",
+          height: "300px",
+          position: "relative",
+          left: "0.3rem",
+          top: "1rem",
+          color: "Red",
+        }}
+      />
+    </div>
+  );
+}
+
+// export function Chartt() {
+//   const data = [
+//     ["Task", "Hours per Day"],
+//     ["Work", 11],
+//     ["Eat", 2],
+//     ["Eat", 2],
+//   ];
+
+//   const options = {
+//     title: "My Daily Activities",
+//     pieHole: 0.4, // Creates a Donut Chart. Does not do anything when is3D is enabled
+//     is3D: true, // Enables 3D view
+//     // slices: {
+//     //   1: { offset: 0.2 }, // Explodes the second slice
+//     // },
+//     pieStartAngle: 100, // Rotates the chart
+//     sliceVisibilityThreshold: 0.02, // Hides slices smaller than 2%
+//     legend: {
+//       position: "bottom",
+//       alignment: "center",
+
+//       textStyle: {
+//         color: "#233238",
+//         fontSize: 14,
+//       },
+//     },
+//     backgroundColor: "#f0f0f0",
+//     colors: ["#8AD1C2", "#9F8AD1", "#D18A99", "#BCD18A", "#D1C28A"],
+//   };
+//   return (
+//     <div style={{ backgroundColor: "green" }}>
+//       <Chart
+//         chartType="PieChart"
+//         data={data}
+//         options={options}
+//         width={"18rem"}
+//         height={"100%"}
+//       />
+//     </div>
+//   );
+// }
 export const data = [
   ["Language", "Speakers (in millions)"],
   ["Chest", 5.85],
@@ -72,23 +177,7 @@ export function Chart2() {
 //     </div>
 //   );
 // }
-export function BasicPie() {
-  return (
-    <PieChart
-      series={[
-        {
-          data: [
-            { id: 0, value: 10, label: "series A" },
-            { id: 1, value: 15, label: "series B" },
-            { id: 2, value: 20, label: "series C" },
-          ],
-        },
-      ]}
-      width={230}
-      height={200}
-    />
-  );
-}
+
 const today = dayjs().format("YYYY-MM-DD");
 export function BasicDateCalendar() {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -132,9 +221,18 @@ export function BasicDateCalendar() {
 export function BasicBars() {
   return (
     <BarChart
-      xAxis={[{ scaleType: "band", data: ["group A", "group B", "group C"] }]}
+      xAxis={[
+        {
+          scaleType: "band",
+          data: ["Biceps", "Triceps", "Rame"],
+          data: ["Biceps", "Triceps", "Rame"],
+          labelColor: "#ffffff", // Promena boje teksta na X osi
+          labelFontSize: 14, // Promena veličine fonta
+          labelFontFamily: "Arial",
+        },
+      ]}
       series={[{ data: [0, 0, 0] }, { data: [4, 6, 3] }, { data: [0, 0, 0] }]}
-      width={260}
+      width={250}
       height={300}
     />
   );
@@ -228,15 +326,15 @@ export default function Profile() {
         </div>
         <div className="muscles">
           <div className="muscles2">
-            <Chart2 />
+            <PieChartDemo />
           </div>
         </div>
         <div className="calories">
           <div className="calories2">
             <CompositionExample />
           </div>
-          <h1 className="text-1xl text-white">Calories burned</h1>
-          <p className="text-white">300</p>
+          <h1 className="text-1xl text-black">Calories burned</h1>
+          <p className="text-black">300</p>
         </div>
       </div>
       <div className="calendar2">
