@@ -37,10 +37,10 @@ export function PieChartDemo() {
   useEffect(() => {
     const documentStyle = getComputedStyle(document.documentElement);
     const data = {
-      labels: ["Chest", "Biceps", "t"],
+      labels: ["Chest", "Biceps", "Triceps"],
       datasets: [
         {
-          data: [1, 0, 2],
+          data: [1, 5, 2],
         },
       ],
     };
@@ -297,8 +297,8 @@ export default function Profile() {
     <div className="main">
       <header className="header">
         <div className="left">
-          <h1 className="text-2xl text-white">Hello,Haris!</h1>
-          <p className="text-white">Always stay motivated</p>
+          <h1 className="text-2xl ">Hello,Haris!</h1>
+          <p className="">Always stay motivated</p>
         </div>
         <button className=" button2 text white">Start training</button>
         <button className=" button1 text-white">Logout</button>
@@ -306,15 +306,15 @@ export default function Profile() {
       <div className="info">
         <div>
           <p className="">Active days</p>
-          <p>4</p>
+          <p className="drugip">4</p>
         </div>
         <div>
           <p>Average rating</p>
-          <p>4.4</p>
+          <p className="drugip">4.4</p>
         </div>
         <div>
           <p>Time remaining</p>
-          <p>3h 2m</p>
+          <p className="drugip">3h 2m</p>
         </div>
       </div>
       <div className="stats">
