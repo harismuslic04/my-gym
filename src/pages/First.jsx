@@ -1,6 +1,9 @@
 import React from "react";
 import "../stilovi/first.css";
 import image from "../images/img.png";
+import kalorije from "../images/kalorije.jpg";
+import procenat from "../images/procenat2.png";
+import serije from "../images/serije2.png";
 export default function First() {
   return (
     <div className="firstmain ">
@@ -37,6 +40,22 @@ export default function First() {
           <div className="customunder">CHEST</div>
           <div className="customunder">BACK</div>
         </div>
+      </div>
+      <div className="firstunder2">
+        <div className="div">
+          <div className="krug">Track how you progressing</div>
+        </div>
+      </div>
+      <div className="firstunder3">
+        <div className="firstunder3levi">
+          <div className="firstunder3levimuscle">
+            <img src={procenat} alt="" />
+          </div>
+          <div className="firstunder3leviserije">
+            <img src={serije} alt="" />
+          </div>
+        </div>
+        <div className="firstunder3desni"></div>
       </div>
     </div>
   );

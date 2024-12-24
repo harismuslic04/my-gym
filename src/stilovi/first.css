@@ -124,7 +124,7 @@
 }
 .firstunder1 .custom .customunder {
   width: 80%;
-  background-color: red;
+
   height: 6rem;
   border-radius: 20px;
   display: flex;
@@ -133,6 +133,7 @@
   font-weight: 700;
   font-size: 2rem;
 }
+
 .firstunder1 .custom .customunder:nth-child(1) {
   background-color: white;
 }
@@ -147,4 +148,175 @@
 }
 .firstunder1 .custom .customunder:nth-child(5) {
   background-color: rgb(231, 233, 121);
+}
+.firstunder2 {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.firstunder2 .div {
+  width: 90%;
+  height: 90%;
+  background-color: rgb(24, 23, 23);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.firstunder2 .div .krug {
+  border-radius: 50%;
+  border: 5px solid rgb(73, 73, 156);
+  width: 400px;
+  height: 400px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+.firstunder3 {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.firstunder3levi {
+  width: 43.5%;
+  height: 90%;
+  background-color: rgb(24, 23, 23);
+  border-radius: 40px;
+}
+.firstunder3desni {
+  width: 43.5%;
+  height: 90%;
+  background-color: rgb(24, 23, 23);
+  border-radius: 40px;
+}
+.firstunder3levimuscle {
+  border-radius: 50%;
+  background-color: rgb(66, 60, 60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 40%;
+  position: relative;
+  top: 5rem;
+  left: 5rem;
+  animation: move-diagonally 10s linear infinite;
+}
+@keyframes move-diagonally {
+  0% {
+    transform: translate(0, 0); /* Početna pozicija */
+  }
+  50% {
+    transform: translate(10px, 10px); /* Kretanje ka gornjem levom uglu */
+  }
+  100% {
+    transform: translate(0, 0); /* Povratak na početnu poziciju */
+  }
+}
+.firstunder3levimuscle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+    border-top-color: rgb(130, 158, 104);
+  }
+  25% {
+    transform: rotate(90deg);
+    border-top-color: rgb(130, 158, 104);
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-color: rgb(130, 158, 104);
+  }
+  75% {
+    transform: rotate(270deg);
+    border-top-color: rgb(130, 158, 104);
+  }
+  100% {
+    transform: rotate(360deg);
+    border-top-color: rgb(130, 158, 104);
+  }
+}
+
+.firstunder3levimuscle img {
+  width: 170px;
+  height: 170px;
+  position: relative; /* Obezbeđuje da slika ostane nepomična */
+  z-index: 1; /* Osigurava da slika ostane iznad pseudo-elementa */
+}
+.firstunder3leviserije {
+  width: 30%;
+  position: relative;
+  left: 20rem;
+  animation: move-diagonally 10s linear infinite;
+  background-color: rgb(66, 60, 60);
+  border-radius: 20px;
+  bottom: 2rem;
+}
+.firstunder3leviserije::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  animation: rotate2 3s linear infinite;
+}
+@keyframes rotate2 {
+  0% {
+    border-top-color: rgb(130, 158, 104); /* Crvena boja na vrhu */
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    border-top-color: transparent;
+    border-right-color: rgb(130, 158, 104); /* Zelena boja desno */
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  50% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: rgb(130, 158, 104); /* Plava boja dole */
+    border-left-color: transparent;
+  }
+  75% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: rgb(130, 158, 104); /* Žuta boja levo */
+  }
+  100% {
+    border-top-color: rgb(130, 158, 104); /* Povratak na crvenu boju */
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
 }
