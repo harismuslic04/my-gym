@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.firstmain {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.firstunder {
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+.firstheader {
+  background-color: rgb(48, 44, 44);
+  width: 50%;
+  border-radius: 0 0 50px 50px;
+  height: 13vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
+.firstheader ul {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+
+  top: 0.5rem;
+  color: rgb(122, 121, 121);
+}
+.firstabout {
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+  width: 90%;
+  height: 83.2vh;
+  position: relative;
+  top: 1.5rem;
+  border-radius: 40px;
+}
+.firstabout button {
+  background-color: #3b82f6; /* Početna boja dugmeta */
+  color: white; /* Boja teksta */
+  border: none; /* Bez ivica */
+  padding: 12px 24px; /* Unutrašnji razmak */
+  font-size: 16px; /* Veličina fonta */
+  border-radius: 8px; /* Zaobljeni uglovi */
+  cursor: pointer; /* Kursor koji se menja u ruku */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  left: 15rem;
+  top: 12rem;
+  width: 10rem;
+  height: 4rem;
+}
+.firstabout button:hover {
+  background-color: #8b5cf6; /* Boja pri hover-u */
+  transform: scale(1.1);
+}
+.firstabout h1 {
+  font-size: 3rem;
+  color: black;
+  position: relative;
+
+  top: 4rem;
+  left: 8rem;
+  width: 40%;
+  font-family: "Wixmadefordisplay", sans-serif;
+  font-weight: 600;
+}
+.firstabout p {
+  width: 35%;
+
+  position: relative;
+  top: 8rem;
+  left: 8rem;
+}
+.slika img {
+  position: absolute;
+  left: 60%;
+  bottom: 1rem;
+  height: 28rem;
+}
+.firstunder1 {
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  top: 2rem;
+}
+.firstunder1 p {
+  color: white;
+  position: relative;
+  top: 27%;
+  left: 13%;
+  width: 20rem;
+}
+.firstunder1 h1 {
+  color: white;
+  width: 40%;
+  font-size: 3rem;
+  position: relative;
+  top: 30%;
+  left: 13%;
+  font-weight: 700;
+}
+.firstunder1 .custom {
+  width: 40%;
+  height: 80%;
+  background-color: rgb(41, 38, 38);
+  position: relative;
+  left: 50%;
+  bottom: 10rem;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.firstunder1 .custom .customunder {
+  width: 80%;
+  background-color: red;
+  height: 6rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
+.firstunder1 .custom .customunder:nth-child(1) {
+  background-color: white;
+}
+.firstunder1 .custom .customunder:nth-child(2) {
+  background-color: rgb(214, 130, 214);
+}
+.firstunder1 .custom .customunder:nth-child(3) {
+  background-color: rgb(107, 167, 216);
+}
+.firstunder1 .custom .customunder:nth-child(4) {
+  background-color: rgb(121, 233, 196);
+}
+.firstunder1 .custom .customunder:nth-child(5) {
+  background-color: rgb(231, 233, 121);
+}

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
+import First from "./pages/First";
 function App() {
   // const [workout, setWorkout] = useState(null);
   // const [poison, setPoison] = useState("individual");
@@ -42,6 +43,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Layout" element={<Layout />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/First" element={<First />} />
       </Routes>
     </BrowserRouter>
   );

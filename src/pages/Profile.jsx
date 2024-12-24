@@ -18,7 +18,7 @@ import Typography from "@mui/material/Typography";
 // import { PieChart } from "@mui/x-charts/PieChart";
 // import { platforms } from "./webUsageStats";
 import { Chart } from "primereact/chart";
-
+import { CSSTransition } from "react-transition-group";
 import { BarChart } from "@mui/x-charts/BarChart";
 import "rsuite/dist/rsuite-no-reset.min.css";
 // import { PieChart } from "@rsuite/charts";
@@ -29,6 +29,7 @@ import { isOverflowing } from "rsuite/esm/DOMHelper";
 import { PieChart } from "react-minimal-pie-chart";
 import { SIZE } from "rsuite/esm/internals/constants";
 import { color } from "chart.js/helpers";
+import { useNavigate } from "react-router-dom";
 
 export function PieChartDemo() {
   const [chartData, setChartData] = useState({});
@@ -293,6 +294,15 @@ export function CompositionExample() {
   );
 }
 export default function Profile() {
+  // const [inProp, setInProp] = useState(true);
+
+  const navigate = useNavigate();
+  const goToTraining = () => {
+    // setInProp(false);
+    setTimeout(() => {
+      navigate("/"); // Navigacija nakon animacije
+    }, 300);
+  };
   return (
     <div className="main">
       <header className="header">
@@ -300,7 +310,9 @@ export default function Profile() {
           <h1 className="text-2xl ">Hello,Haris!</h1>
           <p className="">Always stay motivated</p>
         </div>
-        <button className=" button2 text white">Start training</button>
+        <button onClick={goToTraining} className=" button2 text white">
+          Start training
+        </button>
         <button className=" button1 text-white">Logout</button>
       </header>
       <div className="info">
