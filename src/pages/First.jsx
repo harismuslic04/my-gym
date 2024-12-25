@@ -4,6 +4,7 @@ import image from "../images/img.png";
 import kalorije from "../images/kalorije.jpg";
 import procenat from "../images/procenat2.png";
 import serije from "../images/serije2.png";
+import cal from "../images/cal.png";
 export default function First() {
   return (
     <div className="firstmain ">
@@ -54,8 +55,28 @@ export default function First() {
           <div className="firstunder3leviserije">
             <img src={serije} alt="" />
           </div>
+          <h1>Challenge yourself with achievements</h1>
+          <div className="firstunder3leviaktivnost">
+            <h1>Active days</h1>
+            <h1>4🔥</h1>
+          </div>
         </div>
-        <div className="firstunder3desni"></div>
+        <div className="firstunder3desni">
+          <div className="firstunder3desnikalorije">
+            <h1>570</h1>
+            <p>Burned calories</p>
+          </div>
+          <div className="firstunder3desnical">
+            <img src={cal} alt="" />
+          </div>
+          <div className="firstunder3desnitime">
+            <h1>Time remaining</h1>
+            <p>2h 23m</p>
+          </div>
+          <h1 className="firstunder3desnih1">
+            The body achieves what the mind believes.
+          </h1>
+        </div>
       </div>
     </div>
   );

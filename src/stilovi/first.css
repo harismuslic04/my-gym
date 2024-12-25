@@ -196,6 +196,8 @@
   height: 90%;
   background-color: rgb(24, 23, 23);
   border-radius: 40px;
+  z-index: 1;
+  overflow: hidden;
 }
 .firstunder3desni {
   width: 43.5%;
@@ -205,7 +207,7 @@
 }
 .firstunder3levimuscle {
   border-radius: 50%;
-  background-color: rgb(66, 60, 60);
+  background-color: rgb(26, 26, 34);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,7 +215,7 @@
   height: 40%;
   position: relative;
   top: 5rem;
-  left: 5rem;
+  left: 3rem;
   animation: move-diagonally 10s linear infinite;
 }
 @keyframes move-diagonally {
@@ -242,23 +244,23 @@
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
-    border-top-color: rgb(130, 158, 104);
+    border-top-color: rgb(135, 208, 211);
   }
   25% {
     transform: rotate(90deg);
-    border-top-color: rgb(130, 158, 104);
+    border-top-color: rgb(135, 208, 211);
   }
   50% {
     transform: rotate(180deg);
-    border-top-color: rgb(130, 158, 104);
+    border-top-color: rgb(135, 208, 211);
   }
   75% {
     transform: rotate(270deg);
-    border-top-color: rgb(130, 158, 104);
+    border-top-color: rgb(135, 208, 211);
   }
   100% {
     transform: rotate(360deg);
-    border-top-color: rgb(130, 158, 104);
+    border-top-color: rgb(135, 208, 211);
   }
 }
 
@@ -271,11 +273,12 @@
 .firstunder3leviserije {
   width: 30%;
   position: relative;
+  z-index: 1;
   left: 20rem;
   animation: move-diagonally 10s linear infinite;
-  background-color: rgb(66, 60, 60);
+  background-color: rgb(26, 26, 34);
   border-radius: 20px;
-  bottom: 2rem;
+  bottom: 3rem;
 }
 .firstunder3leviserije::before {
   content: "";
@@ -297,26 +300,108 @@
   }
   25% {
     border-top-color: transparent;
-    border-right-color: rgb(130, 158, 104); /* Zelena boja desno */
+    border-right-color: rgb(135, 208, 211); /* Zelena boja desno */
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
   50% {
     border-top-color: transparent;
     border-right-color: transparent;
-    border-bottom-color: rgb(130, 158, 104); /* Plava boja dole */
+    border-bottom-color: rgb(135, 208, 211); /* Plava boja dole */
     border-left-color: transparent;
   }
   75% {
     border-top-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
-    border-left-color: rgb(130, 158, 104); /* Žuta boja levo */
+    border-left-color: rgb(135, 208, 211); /* Žuta boja levo */
   }
   100% {
-    border-top-color: rgb(130, 158, 104); /* Povratak na crvenu boju */
+    border-top-color: rgb(135, 208, 211); /* Povratak na crvenu boju */
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
   }
+}
+.firstunder3levi h1 {
+  color: white;
+
+  width: 70%;
+  font-size: 2rem;
+  font-weight: 500;
+  position: relative;
+  left: 15%;
+  text-align: center;
+  top: 1rem;
+}
+.firstunder3leviaktivnost {
+  width: 25%;
+  height: 5rem;
+  font-size: 1rem;
+  position: relative;
+  bottom: 30rem;
+  background-color: rgb(54, 177, 177);
+  border-radius: 20px;
+  left: 77%;
+  z-index: 0;
+  border: 2px solid transparent;
+  animation: rotate2 3s linear infinite;
+  animation: move-diagonally 10s linear infinite;
+}
+.firstunder3leviaktivnost h1 {
+  font-size: 1rem;
+}
+.firstunder3desnikalorije {
+  width: 10rem;
+  height: 10rem;
+  background-color: blueviolet;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: move-diagonally 10s linear infinite;
+  position: relative;
+  top: 5rem;
+  left: 5rem;
+}
+.firstunder3desnikalorije h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.firstunder3desnical {
+  background-color: rgb(18, 194, 135);
+  width: 40%;
+  border-radius: 30px;
+  animation: move-diagonally 10s linear infinite;
+  position: relative;
+  left: 50%;
+  bottom: 4rem;
+}
+.firstunder3desnitime {
+  width: 30%;
+  animation: move-diagonally 10s linear infinite;
+
+  background-color: rgb(153, 197, 70);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  bottom: 9rem;
+  left: 3rem;
+}
+.firstunder3desnih1 {
+  color: white;
+
+  width: 70%;
+  font-size: 2rem;
+  font-weight: 500;
+  position: relative;
+  left: 15%;
+  text-align: center;
+  bottom: 1.6rem;
 }
