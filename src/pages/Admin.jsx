@@ -1,6 +1,20 @@
 import React from "react";
 import "../stilovi/admin.css";
 import people from "../utils/people.json";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+export function PaginationControlled() {
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
+
+  return (
+    <Stack spacing={2}>
+      <Pagination count={10} page={page} onChange={handleChange} />
+    </Stack>
+  );
+}
 export default function Admin() {
   return (
     <div className="adminmain">
@@ -44,7 +58,30 @@ export default function Admin() {
             <h1>Email</h1>
             <h1>Remove</h1>
           </div>
-          <div className="admincustomerinfouseri"></div>
+        </div>
+        <div className="admincustomerinfouseri">
+          {people.map((people, peopleIndex) => {
+            return (
+              <div className="ljudi">
+                <div key={peopleIndex} className="admincustomerinfouseri2">
+                  {people.name}
+                </div>
+                <div key={peopleIndex} className="admincustomerinfouseri2">
+                  {people.email}
+                </div>
+                <div key={peopleIndex} className="admincustomerinfouseri2">
+                  <div key={peopleIndex} className="admincustomerinfouseri2">
+                    <div key={peopleIndex} className="admincustomerinfouseri2">
+                      <i class="fa-solid fa-user-xmark"></i>{" "}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="pages">
+          <PaginationControlled />
         </div>
       </div>
     </div>
