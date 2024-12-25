@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.adminmain {
+  background-color: gainsboro;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.adminheader {
+  background-color: gainsboro;
+  width: 80%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.adminheader h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.adminstats {
+  width: 80%;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  height: 7rem;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.adminstats .prvideo {
+  display: flex;
+  /* background-color: red; */
+  gap: 1rem;
+}
+.prvideolevo i {
+  font-size: 2rem;
+}
+.prvideolevo {
+  border-radius: 50%;
+  background-color: rgb(231, 208, 228);
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prvideodesno p {
+  color: gray;
+}
+.prvideodesno h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.prvideodesno {
+  /* background-color: green; */
+}
+.adminstats .drugideo {
+  display: flex;
+  border-left: 1px gray solid;
+  border-right: 1px gray solid;
+  width: 33.3%;
+  position: relative;
+  right: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.drugideolevo i {
+  font-size: 2rem;
+}
+.drugideolevo {
+  border-radius: 50%;
+  background-color: rgb(231, 208, 228);
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.drugideodesno p {
+  color: gray;
+}
+.drugideodesno h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.adminstats .trecideo {
+  display: flex;
+  gap: 1rem;
+}
+.trecideolevo i {
+  font-size: 2rem;
+}
+.trecideodesno p {
+  color: gray;
+}
+.trecideodesno h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.trecideolevo {
+  border-radius: 50%;
+  background-color: rgb(231, 208, 228);
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admincustomers {
+  width: 80%;
+  background-color: white;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: relative;
+  top: 2rem;
+  height: 60%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.admincustomers h1 {
+  position: relative;
+  top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.admincustomersinfo {
+  width: 70%;
+
+  height: 19rem;
+
+  position: relative;
+  top: 1rem;
+}
+.admincustomersinfoheader {
+  width: 100%;
+
+  height: 3rem;
+  display: flex;
+  align-items: start;
+  justify-content: space-around;
+}
+.admincustomersinfoheader h1 {
+  font-size: 1rem;
+}

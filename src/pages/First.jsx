@@ -6,14 +6,20 @@ import procenat from "../images/procenat2.png";
 import serije from "../images/serije2.png";
 import cal from "../images/cal.png";
 export default function First() {
+  function move() {
+    window.location.href = "#firstunder1";
+  }
+  function move2() {
+    window.location.href = "#firstunder3";
+  }
   return (
     <div className="firstmain ">
       <div className="firstunder">
         <div className="firstheader">
           <h1 className="text-2xl relative top-2 text-white ">MyGym</h1>
           <ul>
-            <li>Workout plans</li>
-            <li>Functionality</li>
+            <li onClick={move}>Workout plans</li>
+            <li onClick={move2}>Functionality</li>
           </ul>
         </div>
         <div className="firstabout">
@@ -31,7 +37,7 @@ export default function First() {
           </div>
         </div>
       </div>
-      <div className="firstunder1">
+      <div className="firstunder1" id="firstunder1">
         <p>Train insane or remain the same</p>
         <h1>Create unlimited custom-made workouts </h1>
         <div className="custom">
@@ -47,7 +53,7 @@ export default function First() {
           <div className="krug">Track how you progressing</div>
         </div>
       </div>
-      <div className="firstunder3">
+      <div className="firstunder3" id="firstunder3">
         <div className="firstunder3levi">
           <div className="firstunder3levimuscle">
             <img src={procenat} alt="" />

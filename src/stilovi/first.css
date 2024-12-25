@@ -27,9 +27,16 @@
   position: relative;
   align-items: center;
 }
+.firstheader h1 {
+  cursor: pointer;
+}
+.firstheader ul li {
+  cursor: pointer;
+}
 .firstheader ul {
   display: flex;
   gap: 2rem;
+
   position: relative;
 
   top: 0.5rem;
@@ -51,7 +58,7 @@
   font-size: 16px; /* Veličina fonta */
   border-radius: 8px; /* Zaobljeni uglovi */
   cursor: pointer; /* Kursor koji se menja u ruku */
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: 0.3s ease, transform 0.3s ease;
   position: relative;
   left: 15rem;
   top: 12rem;

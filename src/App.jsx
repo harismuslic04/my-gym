@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
 import First from "./pages/First";
+import Admin from "./pages/Admin";
 function App() {
   // const [workout, setWorkout] = useState(null);
   // const [poison, setPoison] = useState("individual");
@@ -44,6 +45,7 @@ function App() {
         <Route path="/Layout" element={<Layout />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/First" element={<First />} />
+        <Route path="/Admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );
