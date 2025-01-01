@@ -153,23 +153,25 @@
 }
 .admincustomerinfouseri {
   width: 70%;
-  height: 20rem;
+  height: 40rem;
   position: relative;
   bottom: 2rem;
   display: flex;
-  align-items: start;
-  justify-content: space-around;
+
   flex-direction: column;
   gap: 0.5rem;
 }
 .ljudi {
   display: flex;
-  align-items: center;
+
   justify-content: space-between;
-  background-color: white;
+
   width: 100%;
 }
 .pages {
   position: relative;
   bottom: 1rem;
+}
+.removeikona {
+  cursor: pointer;
 }

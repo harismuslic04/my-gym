@@ -3,19 +3,34 @@ import "../stilovi/admin.css";
 import people from "../utils/people.json";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-export function PaginationControlled() {
-  const [page, setPage] = React.useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
-
-  return (
-    <Stack spacing={2}>
-      <Pagination count={10} page={page} onChange={handleChange} />
-    </Stack>
-  );
-}
+import { useState } from "react";
 export default function Admin() {
+  function removeUser(id) {
+    const filteredUser3 = filteredUser2.filter((user) => user.id !== id);
+    console.log(id);
+    setFilteredUser2(filteredUser3);
+  }
+  function PaginationControlled() {
+    const handleChange = (event, value) => {
+      setPage(value - 1);
+      console.log(page);
+    };
+
+    return (
+      <Stack spacing={2}>
+        <Pagination
+          count={Math.floor(people.length / 7) + 1}
+          page={page + 1}
+          onChange={handleChange}
+        />
+      </Stack>
+    );
+  }
+
+  let people2 = [];
+  people2.push(...people);
+  const [filteredUser2, setFilteredUser2] = useState(people2);
+  const [page, setPage] = useState(1);
   return (
     <div className="adminmain">
       <div className="adminheader">
@@ -24,7 +39,7 @@ export default function Admin() {
       <div className="adminstats">
         <div className="prvideo">
           <div className="prvideolevo">
-            <i class="fa-solid fa-users"></i>
+            <i className="fa-solid fa-users"></i>
           </div>
           <div className="prvideodesno">
             <p>Total Customers</p>
@@ -33,7 +48,7 @@ export default function Admin() {
         </div>
         <div className="drugideo">
           <div className="drugideolevo">
-            <i class="fa-solid fa-users"></i>
+            <i className="fa-solid fa-users"></i>
           </div>
           <div className="drugideodesno">
             <p>Members</p>
@@ -42,7 +57,7 @@ export default function Admin() {
         </div>
         <div className="trecideo">
           <div className="trecideolevo">
-            <i class="fa-solid fa-users"></i>
+            <i className="fa-solid fa-users"></i>
           </div>
           <div className="trecideodesno">
             <p>Active Now</p>
@@ -60,25 +75,22 @@ export default function Admin() {
           </div>
         </div>
         <div className="admincustomerinfouseri">
-          {people.map((people, peopleIndex) => {
-            return (
-              <div className="ljudi">
-                <div key={peopleIndex} className="admincustomerinfouseri2">
-                  {people.name}
-                </div>
-                <div key={peopleIndex} className="admincustomerinfouseri2">
-                  {people.email}
-                </div>
-                <div key={peopleIndex} className="admincustomerinfouseri2">
-                  <div key={peopleIndex} className="admincustomerinfouseri2">
-                    <div key={peopleIndex} className="admincustomerinfouseri2">
-                      <i class="fa-solid fa-user-xmark"></i>{" "}
-                    </div>
+          {filteredUser2
+            .slice(page * 6, page * 6 + 6)
+            .map((people, peopleIndex) => {
+              return (
+                <div key={people.id} className="ljudi">
+                  <div className="admincustomerinfouseri2">{people.name}</div>
+                  <div className="admincustomerinfouseri2">{people.email}</div>
+                  <div className="admincustomerinfouseri2">
+                    <i
+                      className="removeikona fa-solid fa-user-xmark"
+                      onClick={() => removeUser(people.id)}
+                    ></i>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
         <div className="pages">
           <PaginationControlled />
