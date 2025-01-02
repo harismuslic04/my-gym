@@ -34,6 +34,26 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [selectedData, setSelectedData] = useState(null);
+  const [barData, setBarData] = useState([0, 0, 0]);
+  const [barData2, setBarData2] = useState([0, 0, 0]);
+  const [barData3, setBarData3] = useState([0, 0, 0]);
+  const [barData4, setBarData4] = useState(0);
+  useEffect(() => {
+    if (selectedData) {
+      // Uzimanje podataka iz selectedData i ažuriranje barData
+      const newBarData = selectedData.muscleGroups.map((group) => group.name);
+      const newBarData2 = selectedData.muscleGroups.map((group) => group.sets);
+      const newBarDat3 = selectedData.muscleGroups.map(
+        (group) => group.percentage
+      ); // Na primer, koristi 'sets' za bar graf
+      const newBarData4 = selectedData.totalCaloriesBurned;
+      setBarData(newBarData); // Ažurira podatke za bar graf
+      setBarData2(newBarData2);
+      setBarData3(newBarDat3);
+      setBarData4(newBarData4);
+      console.log(newBarData);
+    }
+  }, [selectedData]);
   const navigate = useNavigate();
   const goToTraining = () => {
     setTimeout(() => {
@@ -125,30 +145,20 @@ export default function Profile() {
     );
   }
   function BasicBars() {
-    const [barData, setBarData] = useState([0, 0, 0]);
-
-    useEffect(() => {
-      if (selectedData) {
-        // Uzimanje podataka iz selectedData i ažuriranje barData
-        const newBarData = selectedData.muscleGroups.map((group) => group.name); // Na primer, koristi 'sets' za bar graf
-        setBarData(newBarData); // Ažurira podatke za bar graf
-        console.log(newBarData);
-      }
-    }, [selectedData]);
     return (
       <BarChart
         xAxis={[
           {
             scaleType: "band",
             data: barData,
-
-            labelColor: "#ffffff", // Promena boje teksta na X osi
-            labelFontSize: 14, // Promena veličine fonta
-            labelFontFamily: "Arial",
           },
         ]}
-        series={[{ data: [0, 0, 0] }, { data: [4, 6, 3] }, { data: [0, 0, 0] }]}
-        width={250}
+        series={[
+          { data: [0, 0, 0] },
+          { data: [barData2[0], barData2[1], barData2[2], barData2[3]] },
+          { data: [0, 0, 0] },
+        ]}
+        width={320}
         height={300}
       />
     );
@@ -200,7 +210,7 @@ export default function Profile() {
         height={200}
         startAngle={-110}
         endAngle={110}
-        value={70}
+        value={barData4 * 0.1}
       >
         <GaugeReferenceArc />
         <GaugeValueArc />
@@ -215,10 +225,10 @@ export default function Profile() {
     useEffect(() => {
       const documentStyle = getComputedStyle(document.documentElement);
       const data = {
-        labels: ["Chest", "Biceps", "Triceps"],
+        labels: barData,
         datasets: [
           {
-            data: [2, 6, 2],
+            data: [barData3[0], barData3[1], barData3[2], barData3[3]],
           },
         ],
       };
@@ -305,7 +315,7 @@ export default function Profile() {
             <CompositionExample />
           </div>
           <h1 className="text-1xl text-black">Calories burned</h1>
-          <p className="text-black">300</p>
+          <p className="text-black">{barData4}</p>
         </div>
       </div>
       <div className="calendar2">

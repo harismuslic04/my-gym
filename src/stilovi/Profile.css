@@ -63,7 +63,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 80%;
+  width: 85%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   height: 4rem;
@@ -76,11 +76,11 @@
 
 .stats {
   background-color: rgb(240, 248, 255);
-  width: 55%;
+  width: 61%;
   height: 25rem;
   position: relative;
   top: 2rem;
-  left: 9em;
+  left: 6.3rem;
   border-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -98,12 +98,17 @@
   top: 15%;
   border-radius: 0 0 0 30px;
 }
+.sets2 {
+  /* background-color: green; */
+  position: relative;
+  right: 1rem;
+}
 .muscles {
   height: 80%;
 
   position: relative;
   top: 20%;
-
+  right: 1rem;
   border-left: 1px solid rgb(44, 42, 42);
   border-right: 1px solid rgb(44, 42, 42);
   /* display: flex;
@@ -139,7 +144,7 @@
   background-color: rgb(79, 231, 241);
   position: absolute;
   width: 23%;
-  left: 143vh;
+  left: 148vh;
   border-radius: 30px;
   top: 13rem;
 }
