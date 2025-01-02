@@ -1,0 +1,119 @@
+{
+  "workoutLog": [
+    {
+      "date": "2025-01-01",
+      "muscleGroups": [
+        {
+          "name": "Chest",
+          "sets": 12,
+          "percentage": 25
+        },
+        {
+          "name": "Back",
+          "sets": 10,
+          "percentage": 20.83
+        },
+        {
+          "name": "Legs",
+          "sets": 15,
+          "percentage": 31.25
+        },
+        {
+          "name": "Shoulders",
+          "sets": 7,
+          "percentage": 14.58
+        },
+        {
+          "name": "Arms",
+          "sets": 4,
+          "percentage": 8.33
+        }
+      ],
+      "totalCaloriesBurned": 650
+    },
+    {
+      "date": "2025-01-02",
+      "muscleGroups": [
+        {
+          "name": "Chest",
+          "sets": 10,
+          "percentage": 20
+        },
+        {
+          "name": "Legs",
+          "sets": 20,
+          "percentage": 40
+        },
+        {
+          "name": "Arms",
+          "sets": 8,
+          "percentage": 16
+        },
+        {
+          "name": "Back",
+          "sets": 12,
+          "percentage": 24
+        }
+      ],
+      "totalCaloriesBurned": 700
+    },
+    {
+      "date": "2025-01-03",
+      "muscleGroups": [
+        {
+          "name": "Shoulders",
+          "sets": 10,
+          "percentage": 50
+        },
+        {
+          "name": "Legs",
+          "sets": 10,
+          "percentage": 50
+        }
+      ],
+      "totalCaloriesBurned": 500
+    },
+    {
+      "date": "2025-01-04",
+      "muscleGroups": [
+        {
+          "name": "Back",
+          "sets": 14,
+          "percentage": 35
+        },
+        {
+          "name": "Legs",
+          "sets": 20,
+          "percentage": 50
+        },
+        {
+          "name": "Chest",
+          "sets": 6,
+          "percentage": 15
+        }
+      ],
+      "totalCaloriesBurned": 600
+    },
+    {
+      "date": "2025-01-05",
+      "muscleGroups": [
+        {
+          "name": "Arms",
+          "sets": 15,
+          "percentage": 37.5
+        },
+        {
+          "name": "Shoulders",
+          "sets": 10,
+          "percentage": 25
+        },
+        {
+          "name": "Legs",
+          "sets": 15,
+          "percentage": 37.5
+        }
+      ],
+      "totalCaloriesBurned": 550
+    }
+  ]
+}
