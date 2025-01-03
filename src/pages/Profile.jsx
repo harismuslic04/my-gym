@@ -52,6 +52,11 @@ export default function Profile() {
       setBarData3(newBarDat3);
       setBarData4(newBarData4);
       console.log(newBarData);
+    } else {
+      setBarData(null); // Ažurira podatke za bar graf
+      setBarData2(null);
+      setBarData3(null);
+      setBarData4(null);
     }
   }, [selectedData]);
   const navigate = useNavigate();
@@ -110,7 +115,12 @@ export default function Profile() {
         (entry) => entry.date == date.format("YYYY-MM-DD")
       );
 
-      setSelectedData(podaci);
+      if (podaci) {
+        setSelectedData(podaci); // Postavlja podatke ako postoje
+      } else {
+        console.log("nema podataka");
+        setSelectedData(null);
+      }
     };
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -146,21 +156,23 @@ export default function Profile() {
   }
   function BasicBars() {
     return (
-      <BarChart
-        xAxis={[
-          {
-            scaleType: "band",
-            data: barData,
-          },
-        ]}
-        series={[
-          { data: [0, 0, 0] },
-          { data: [barData2[0], barData2[1], barData2[2], barData2[3]] },
-          { data: [0, 0, 0] },
-        ]}
-        width={320}
-        height={300}
-      />
+      barData && (
+        <BarChart
+          xAxis={[
+            {
+              scaleType: "band",
+              data: barData,
+            },
+          ]}
+          series={[
+            { data: [0, 0, 0] },
+            { data: [barData2[0], barData2[1], barData2[2], barData2[3]] },
+            { data: [0, 0, 0] },
+          ]}
+          width={320}
+          height={300}
+        />
+      )
     );
   }
   function PieActiveArc() {
@@ -205,17 +217,19 @@ export default function Profile() {
 
   function CompositionExample() {
     return (
-      <GaugeContainer
-        width={200}
-        height={200}
-        startAngle={-110}
-        endAngle={110}
-        value={barData4 * 0.1}
-      >
-        <GaugeReferenceArc />
-        <GaugeValueArc />
-        <GaugePointer />
-      </GaugeContainer>
+      barData4 && (
+        <GaugeContainer
+          width={200}
+          height={200}
+          startAngle={-110}
+          endAngle={110}
+          value={barData4 * 0.1}
+        >
+          <GaugeReferenceArc />
+          <GaugeValueArc />
+          <GaugePointer />
+        </GaugeContainer>
+      )
     );
   }
   function PieChartDemo() {
@@ -228,7 +242,9 @@ export default function Profile() {
         labels: barData,
         datasets: [
           {
-            data: [barData3[0], barData3[1], barData3[2], barData3[3]],
+            data: barData2
+              ? [barData2[0], barData2[1], barData2[2], barData2[3]]
+              : [0, 0, 0],
           },
         ],
       };
@@ -300,23 +316,37 @@ export default function Profile() {
       </div>
       <div className="stats">
         <h1 className="text-2xl text-white">Physical Activity</h1>
-        <div className="sets">
-          <div className="sets2">
-            <BasicBars />
+        {barData && (
+          <div className="sets">
+            {JSON.stringify(barData) !== JSON.stringify([0, 0, 0]) && (
+              <div className="sets2">
+                <BasicBars />
+              </div>
+            )}
           </div>
-        </div>
-        <div className="muscles">
-          <div className="muscles2">
-            <PieChartDemo />
+        )}
+        {!barData && (
+          <div className="nemapodataka">
+            <h1>There are no recorded activities for this day.</h1>
           </div>
-        </div>
-        <div className="calories">
-          <div className="calories2">
-            <CompositionExample />
+        )}
+        {barData && (
+          <div className="muscles">
+            <div className="muscles2">
+              <PieChartDemo />
+            </div>
           </div>
-          <h1 className="text-1xl text-black">Calories burned</h1>
-          <p className="text-black">{barData4}</p>
-        </div>
+        )}
+        {barData && (
+          <div className="calories">
+            <div className="calories2">
+              <CompositionExample />
+            </div>
+
+            <h1 className="text-1xl text-black">Calories burned</h1>
+            <p className="text-black">{barData4}</p>
+          </div>
+        )}
       </div>
       <div className="calendar2">
         <h1
