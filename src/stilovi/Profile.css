@@ -162,3 +162,10 @@
 
   height: 2rem;
 }
+.profileDatum {
+  position: absolute;
+  height: 1rem;
+  width: 10rem;
+  left: 22rem;
+  top: 0.6rem;
+}

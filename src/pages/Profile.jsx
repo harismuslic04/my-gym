@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../stilovi/Profile.css";
 import * as React from "react";
 import { pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import dayjs from "dayjs";
+import { Context } from "../App";
 import statistika from "../utils/statistika.json";
 import {
   GaugeContainer,
@@ -38,6 +39,7 @@ export default function Profile() {
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
+  const [value, setValue] = useContext(Context);
   useEffect(() => {
     if (selectedData) {
       // Uzimanje podataka iz selectedData i ažuriranje barData
@@ -52,6 +54,7 @@ export default function Profile() {
       setBarData3(newBarDat3);
       setBarData4(newBarData4);
       console.log(newBarData);
+      console.log(value);
     } else {
       setBarData(null); // Ažurira podatke za bar graf
       setBarData2(null);
@@ -104,8 +107,9 @@ export default function Profile() {
   }
 
   const today = dayjs().format("YYYY-MM-DD");
+
   function BasicDateCalendar() {
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState("2025-01-01");
 
     const handleDateChange = (date) => {
       setSelectedDate(date); // Postavlja novi odabrani datum
@@ -242,8 +246,14 @@ export default function Profile() {
         labels: barData,
         datasets: [
           {
-            data: barData2
-              ? [barData2[0], barData2[1], barData2[2], barData2[3]]
+            data: barData3
+              ? [
+                  barData3[0],
+                  barData3[1],
+                  barData3[2],
+                  barData3[3],
+                  barData3[4],
+                ]
               : [0, 0, 0],
           },
         ],
@@ -287,7 +297,9 @@ export default function Profile() {
       </div>
     );
   }
-
+  useEffect(() => {
+    console.log("Value je ažurirano:", value);
+  }, [value]);
   return (
     <div className="main">
       <header className="header">
@@ -307,7 +319,7 @@ export default function Profile() {
         </div>
         <div>
           <p>Average rating</p>
-          <p className="drugip">4.4</p>
+          <p className="drugip">{value}</p>
         </div>
         <div>
           <p>Time remaining</p>
@@ -316,6 +328,11 @@ export default function Profile() {
       </div>
       <div className="stats">
         <h1 className="text-2xl text-white">Physical Activity</h1>
+        {selectedData && (
+          <div className="profileDatum">
+            <h1>{selectedData.date}</h1>
+          </div>
+        )}
         {barData && (
           <div className="sets">
             {JSON.stringify(barData) !== JSON.stringify([0, 0, 0]) && (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Hero from "./components/Hero";
 import Generator from "./components/Generator";
 import Workout from "./components/Workout";
@@ -9,45 +9,23 @@ import Layout from "./pages/Layout";
 import Profile from "./pages/Profile";
 import First from "./pages/First";
 import Admin from "./pages/Admin";
+import * as React from "react";
+export const Context = createContext();
 function App() {
-  // const [workout, setWorkout] = useState(null);
-  // const [poison, setPoison] = useState("individual");
-  // const [muscles, setMuscles] = useState([]);
-  // const [goal, setGoal] = useState("strength_power");
-
-  // function updateWorkout() {
-  //   if (muscles.length < 1) {
-  //     return;
-  //   }
-  //   let newWorkout = generateWorkout({ poison, muscles, goal });
-
-  //   setWorkout(newWorkout);
-  //   window.location.href = "#workout";
-  // }
+  const [value, setValue] = useState(4); // Početna vrednost za kontekst
 
   return (
-    // <main className="min-h-screen flex flex-col bg-gradient-to-r from-slate-800 to-slate-950 text-white text-sm sm:text-base">
-    //   <Hero />
-    //   <Generator
-    //     poison={poison}
-    //     setPoison={setPoison}
-    //     muscles={muscles}
-    //     setMuscles={setMuscles}
-    //     goal={goal}
-    //     setGoal={setGoal}
-    //     updateWorkout={updateWorkout}
-    //   />
-    //   {workout && <Workout workout={workout} />}
-    // </main>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Layout" element={<Layout />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/First" element={<First />} />
-        <Route path="/Admin" element={<Admin />} />
-      </Routes>
-    </BrowserRouter>
+    <Context.Provider value={[value, setValue]}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Layout" element={<Layout />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/First" element={<First />} />
+          <Route path="/Admin" element={<Admin />} />
+        </Routes>
+      </BrowserRouter>
+    </Context.Provider>
   );
 }
 
