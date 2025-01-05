@@ -40,6 +40,9 @@ export default function Profile() {
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
   const [value, setValue] = useContext(Context);
+  function klikni() {
+    setValue(5);
+  }
   useEffect(() => {
     if (selectedData) {
       // Uzimanje podataka iz selectedData i ažuriranje barData
@@ -310,7 +313,14 @@ export default function Profile() {
         <button onClick={goToTraining} className=" button2 text white">
           Start training
         </button>
-        <button className=" button1 text-white">Logout</button>
+        <button
+          onClick={() => {
+            klikni();
+          }}
+          className=" button1 text-white"
+        >
+          Logout
+        </button>
       </header>
       <div className="info">
         <div>

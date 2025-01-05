@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.loginMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #e6f2ff;
+  font-family: Arial, sans-serif;
+}
+.loginbar {
+  background-color: white;
+  width: 60%;
+  height: 70vh;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+}
+.loginleft {
+  background-color: white;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.loginleft h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(5, 139, 139);
+}
+.loginleftinput {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  width: 70%;
+}
+.loginleftinput input {
+  height: 2rem;
+  padding: 30px;
+  background-color: gainsboro;
+  border-radius: 20px;
+}
+.loginleftinput i {
+  position: relative;
+  top: 2.33rem;
+  left: 0.6rem;
+  color: rgb(184, 182, 185);
+  width: 0.5rem;
+}
+
+.loginleft button {
+  width: 40%;
+  background-color: rgb(0, 174, 255);
+  height: 3rem;
+  border-radius: 20px;
+  color: white;
+  opacity: 0.7;
+}
+.loginleft button:hover {
+  opacity: 1;
+}
+.loginright {
+  width: 50%;
+  background: linear-gradient(135deg, #80d0ff, #1e90ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.loginright p {
+  width: 55%;
+  text-align: center;
+  color: white;
+}
+.loginright h1 {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+}
