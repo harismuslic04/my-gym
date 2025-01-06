@@ -39,7 +39,7 @@ export default function Profile() {
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
-  const [value, setValue] = useContext(Context);
+  const { value, setValue } = useContext(Context);
   function klikni() {
     setValue(5);
   }

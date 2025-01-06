@@ -14,9 +14,22 @@ import * as React from "react";
 export const Context = createContext();
 function App() {
   const [value, setValue] = useState(3); // Početna vrednost za kontekst
-
+  const [signup, setSignup] = useState(false);
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState("");
   return (
-    <Context.Provider value={[value, setValue]}>
+    <Context.Provider
+      value={{
+        value,
+        setValue,
+        signup,
+        setSignup,
+        email,
+        setEmail,
+        password,
+        setPassword,
+      }}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -10,7 +10,7 @@ import StarIcon from "@mui/icons-material/Star";
 import "../stilovi/home.css";
 import { Context } from "../App";
 export default function Home() {
-  const [value, setValue] = React.useContext(Context);
+  const { value, setValue } = React.useContext(Context);
   const [hover, setHover] = React.useState(-1);
 
   const labels = {
