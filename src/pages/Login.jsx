@@ -1,10 +1,10 @@
 import React from "react";
 import "../stilovi/login.css";
 import { useState, useEffect, useContext } from "react";
-import { Context } from "../App";
+import { AppContext } from "../components/AppContext";
 export default function Login() {
-  const { signup, setSignup, email, setEmail, password, setPassword } =
-    useContext(Context);
+  const { value, signup, setSignup, email, setEmail, password, setPassword } =
+    useContext(AppContext);
   return (
     <div className="loginMain">
       <div className="loginbar">
@@ -39,7 +39,7 @@ export default function Login() {
           </button>
         </div>
         <div className="loginright">
-          <h1>Hello,Friend!</h1>
+          <h1>{value}</h1>
           <p>Enjoy you personal details and start journey with us</p>
           <button>Sign Up</button>
         </div>

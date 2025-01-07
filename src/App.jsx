@@ -1,4 +1,3 @@
-import { useState, createContext } from "react";
 import Hero from "./components/Hero";
 import Generator from "./components/Generator";
 import Workout from "./components/Workout";
@@ -11,36 +10,18 @@ import First from "./pages/First";
 import Admin from "./pages/Admin";
 import Login from "./pages/login";
 import * as React from "react";
-export const Context = createContext();
 function App() {
-  const [value, setValue] = useState(3); // Početna vrednost za kontekst
-  const [signup, setSignup] = useState(false);
-  const [email, setEmail] = useState(" ");
-  const [password, setPassword] = useState("");
   return (
-    <Context.Provider
-      value={{
-        value,
-        setValue,
-        signup,
-        setSignup,
-        email,
-        setEmail,
-        password,
-        setPassword,
-      }}
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Layout" element={<Layout />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/First" element={<First />} />
-          <Route path="/Admin" element={<Admin />} />
-          <Route path="/Login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
-    </Context.Provider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Layout" element={<Layout />} />
+        <Route path="/Profile" element={<Profile />} />
+        <Route path="/First" element={<First />} />
+        <Route path="/Admin" element={<Admin />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

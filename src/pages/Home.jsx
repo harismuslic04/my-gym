@@ -8,9 +8,9 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import "../stilovi/home.css";
-import { Context } from "../App";
+import { AppContext } from "../components/AppContext";
 export default function Home() {
-  const { value, setValue } = React.useContext(Context);
+  const { value, setValue } = React.useContext(AppContext);
   const [hover, setHover] = React.useState(-1);
 
   const labels = {
@@ -42,7 +42,7 @@ export default function Home() {
           getLabelText={getLabelText}
           onChange={(event, newValue) => {
             setValue(newValue);
-            console.log(value);
+            console.log(newValue);
           }}
           onChangeActive={(event, newHover) => {
             setHover(newHover);

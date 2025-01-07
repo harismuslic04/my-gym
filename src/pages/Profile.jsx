@@ -3,7 +3,7 @@ import "../stilovi/Profile.css";
 import * as React from "react";
 import { pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import dayjs from "dayjs";
-import { Context } from "../App";
+import { AppContext } from "../components/AppContext";
 import statistika from "../utils/statistika.json";
 import {
   GaugeContainer,
@@ -39,7 +39,7 @@ export default function Profile() {
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
-  const { value, setValue } = useContext(Context);
+  const { value, setValue } = useContext(AppContext);
   function klikni() {
     setValue(5);
   }
