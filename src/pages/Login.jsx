@@ -9,7 +9,7 @@ export default function Login() {
     <div className="loginMain">
       <div className="loginbar">
         <div className="loginleft">
-          <h1>Sign In to MyGym</h1>
+          <h1>{signup ? "Sign In to MyGym" : "Create account"}</h1>
           <div className="loginleftinput">
             <i className="fa-regular fa-envelope"></i>
             <input
@@ -39,9 +39,19 @@ export default function Login() {
           </button>
         </div>
         <div className="loginright">
-          <h1>{value}</h1>
-          <p>Enjoy you personal details and start journey with us</p>
-          <button>Sign Up</button>
+          <h1>{signup ? "Hello, Friend!" : "Welcome back"}</h1>
+          <p>
+            {signup
+              ? "Enjoy you personal details and start journey with us"
+              : "To keep connected with us please login with your personal info"}
+          </p>
+          <button
+            onClick={() => {
+              setSignup(!signup);
+            }}
+          >
+            {signup ? "Sign up" : "Sign in"}
+          </button>
         </div>
       </div>
     </div>

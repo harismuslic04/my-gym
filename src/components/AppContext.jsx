@@ -8,6 +8,11 @@ function ContextProvider({ children }) {
   const [signup, setSignup] = useState(false);
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState("");
+  const [vezba1, setVezba1] = useState(0);
+  const [vezba2, setVezba2] = useState(0);
+  const [vezba3, setVezba3] = useState(0);
+  const [vezba4, setVezba4] = useState(0);
+  const [vezba5, setVezba5] = useState(0);
   useEffect(() => {
     console.log(value);
   }, [value]);
@@ -20,6 +25,16 @@ function ContextProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    vezba1,
+    setVezba1,
+    vezba2,
+    setVezba2,
+    vezba3,
+    setVezba3,
+    vezba4,
+    setVezba4,
+    vezba5,
+    setVezba5,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

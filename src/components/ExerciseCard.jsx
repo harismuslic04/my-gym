@@ -1,11 +1,62 @@
-import React, { useState } from "react";
-// import Workout from "./Workout";
+import React, { useState, useContext } from "react";
+import { AppContext } from "../components/AppContext";
 export default function ExerciseCard(props) {
   const [setsCompleted, setSetsCompleted] = useState(0);
-  function handleSetIncrement() {
-    setSetsCompleted((setsCompleted + 1) % 6);
-  }
   const { exercise, i } = props;
+  function handleSetIncrement() {
+    setSetsCompleted((prev) => {
+      const newSetsCompleted = (prev + 1) % 6;
+
+      // Ažuriraj odgovarajuću vezbu odmah koristeći novu vrednost
+      if (i === 0) {
+        setVezba1(newSetsCompleted);
+      }
+      if (i === 1) {
+        setVezba2(newSetsCompleted);
+      }
+      if (i === 2) {
+        setVezba3(newSetsCompleted);
+      }
+      if (i === 3) {
+        setVezba4(newSetsCompleted);
+      }
+      if (i === 4) {
+        setVezba5(newSetsCompleted);
+      }
+
+      return newSetsCompleted; // Vrati novu vrednost stanja
+    });
+  }
+
+  const {
+    vezba1,
+    setVezba1,
+    vezba2,
+    setVezba2,
+    vezba3,
+    setVezba3,
+    vezba4,
+    setVezba4,
+    vezba5,
+    setVezba5,
+  } = useContext(AppContext);
+  // function setVezbe() {
+  //   if (i == 0) {
+  //     setVezba1(setsCompleted);
+  //   }
+  //   if (i == 1) {
+  //     setVezba2(setsCompleted);
+  //   }
+  //   if (i == 2) {
+  //     setVezba3(setsCompleted);
+  //   }
+  //   if (i == 3) {
+  //     setVezba4(setsCompleted);
+  //   }
+  //   if (i == 4) {
+  //     setVezba5(setsCompleted);
+  //   }
+  // }
   return (
     <div className="p-4 rounded-4 flex flex-col gap-4 bg-slate-950 sm:flex-wrap">
       <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-x-4">
@@ -45,13 +96,23 @@ export default function ExerciseCard(props) {
           );
         })}
         <button
-          onClick={handleSetIncrement}
+          onClick={() => {
+            handleSetIncrement();
+            // setVezbe();
+          }}
           className="flex flex-col p-2 rounded border-[1.5px] duration-200 border-solid border-blue-900 hover:border-blue-600 w-full duration-200"
         >
           <h3 className="text-slate-400 text-sm capitalize">Sets</h3>
           <p className="font-medium">{setsCompleted} / 5</p>
         </button>
       </div>
+      <button
+        onClick={() => {
+          console.log(vezba1, vezba2, vezba3, vezba4, vezba5);
+        }}
+      >
+        nebitno
+      </button>
     </div>
   );
 }

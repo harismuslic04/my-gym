@@ -5,7 +5,10 @@ import kalorije from "../images/kalorije.jpg";
 import procenat from "../images/procenat2.png";
 import serije from "../images/serije2.png";
 import cal from "../images/cal.png";
+import { useNavigate } from "react-router-dom";
 export default function First() {
+  const navigate = useNavigate();
+
   function move() {
     window.location.href = "#firstunder1";
   }
@@ -30,7 +33,13 @@ export default function First() {
             intuitive interface.
           </p>
 
-          <button>Get Started</button>
+          <button
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Get Started
+          </button>
           <div className="signup"></div>
           <div className="slika">
             <img src={image} alt="" />
