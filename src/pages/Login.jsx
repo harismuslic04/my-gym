@@ -3,6 +3,7 @@ import "../stilovi/login.css";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "../components/AppContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 export default function Login() {
   const navigate = useNavigate();
   const {
@@ -15,6 +16,21 @@ export default function Login() {
     username,
     setUsername,
   } = useContext(AppContext);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3000/auth/login", {
+        email,
+        password,
+      });
+      if (response.status === 201) {
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err.mesage);
+    }
+  };
   return (
     <div className="loginMain">
       <div className="loginbar">
@@ -33,14 +49,12 @@ export default function Login() {
             <input
               onChange={(event) => {
                 setPassword(event.target.value);
-                console.log(password);
-                console.log(email);
               }}
               type="password"
               placeholder="Password"
             />
           </div>
-          <button>Sign in</button>
+          <button onClick={handleSubmit}>Sign in</button>
         </div>
         <div className="loginright">
           <h1>Hello, Friend!</h1>
