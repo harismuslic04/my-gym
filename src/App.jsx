@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import First from "./pages/First";
 import Admin from "./pages/Admin";
 import Login from "./pages/login";
+import Register from "./pages/Register";
 import * as React from "react";
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/First" element={<First />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

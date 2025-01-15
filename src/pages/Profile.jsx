@@ -43,6 +43,7 @@ export default function Profile() {
   function klikni() {
     setValue(5);
   }
+
   useEffect(() => {
     if (selectedData) {
       // Uzimanje podataka iz selectedData i ažuriranje barData

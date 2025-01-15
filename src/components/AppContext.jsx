@@ -7,12 +7,14 @@ function ContextProvider({ children }) {
   const [value, setValue] = useState(3); // Početna vrednost za kontekst
   const [signup, setSignup] = useState(false);
   const [email, setEmail] = useState(" ");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [vezba1, setVezba1] = useState(0);
   const [vezba2, setVezba2] = useState(0);
   const [vezba3, setVezba3] = useState(0);
   const [vezba4, setVezba4] = useState(0);
   const [vezba5, setVezba5] = useState(0);
+
   useEffect(() => {
     console.log(value);
   }, [value]);
@@ -25,6 +27,8 @@ function ContextProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    username,
+    setUsername,
     vezba1,
     setVezba1,
     vezba2,
