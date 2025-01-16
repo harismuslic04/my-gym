@@ -5,6 +5,7 @@ import { pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import dayjs from "dayjs";
 import { AppContext } from "../components/AppContext";
 import statistika from "../utils/statistika.json";
+
 import {
   GaugeContainer,
   GaugeValueArc,
@@ -32,22 +33,44 @@ import { PieChart } from "react-minimal-pie-chart";
 import { SIZE } from "rsuite/esm/internals/constants";
 import { color } from "chart.js/helpers";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const [selectedData, setSelectedData] = useState(null);
   const [barData, setBarData] = useState([0, 0, 0]);
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
-  const { value, setValue } = useContext(AppContext);
+  const { value, setValue, workout, setWorkout } = useContext(AppContext);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    const savedUsername = localStorage.getItem("username");
-    if (savedUsername) {
-      setUsername(savedUsername);
-    }
-  }, []);
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/auth/getWorkouts",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        setWorkout(response.data);
+      } catch (err) {
+        console.error("Greška prilikom dobijanja podataka o treninzima:", err);
+      }
+    };
+
+    fetchUser();
+  }, [navigate]);
+
   function klikni() {
     setValue(5);
   }
@@ -74,7 +97,7 @@ export default function Profile() {
       setBarData4(null);
     }
   }, [selectedData]);
-  const navigate = useNavigate();
+
   const goToTraining = () => {
     setTimeout(() => {
       navigate("/"); // Navigacija nakon animacije
@@ -328,7 +351,7 @@ export default function Profile() {
         </button>
         <button
           onClick={() => {
-            klikni();
+            console.log(workout);
           }}
           className=" button1 text-white"
         >
@@ -342,7 +365,7 @@ export default function Profile() {
         </div>
         <div>
           <p>Average rating</p>
-          <p className="drugip">{value}</p>
+          <p className="drugip">{workout?.[0]?.rating || "N/A"}</p>
         </div>
         <div>
           <p>Time remaining</p>

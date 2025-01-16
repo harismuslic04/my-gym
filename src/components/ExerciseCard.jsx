@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
+import dayjs from "dayjs";
 export default function ExerciseCard(props) {
   const navigate = useNavigate();
   const [setsCompleted, setSetsCompleted] = useState(0);
@@ -29,8 +30,13 @@ export default function ExerciseCard(props) {
     setMisici5,
     date,
     value,
+    setDate,
+    workout,
+    setWorkout,
   } = useContext(AppContext);
   useEffect(() => {
+    const currentDate = dayjs().format("YYYY-MM-DD");
+    setDate(currentDate);
     // Ažuriraj mišiće za određenu vežbu kada se izvrši increment
     if (setsCompleted !== 0) {
       if (i === 0) {

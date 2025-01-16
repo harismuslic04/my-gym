@@ -20,6 +20,7 @@ function ContextProvider({ children }) {
   const [misici3, setMisici3] = useState("");
   const [misici4, setMisici4] = useState("");
   const [misici5, setMisici5] = useState("");
+  const [workout, setWorkout] = useState("");
   useEffect(() => {
     console.log(value);
   }, [value]);
@@ -56,6 +57,8 @@ function ContextProvider({ children }) {
     setMisici4,
     misici5,
     setMisici5,
+    workout,
+    setWorkout,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;
