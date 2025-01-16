@@ -14,7 +14,12 @@ function ContextProvider({ children }) {
   const [vezba3, setVezba3] = useState(0);
   const [vezba4, setVezba4] = useState(0);
   const [vezba5, setVezba5] = useState(0);
-
+  const [date, setDate] = useState("");
+  const [misici1, setMisici1] = useState("");
+  const [misici2, setMisici2] = useState("");
+  const [misici3, setMisici3] = useState("");
+  const [misici4, setMisici4] = useState("");
+  const [misici5, setMisici5] = useState("");
   useEffect(() => {
     console.log(value);
   }, [value]);
@@ -39,6 +44,18 @@ function ContextProvider({ children }) {
     setVezba4,
     vezba5,
     setVezba5,
+    date,
+    setDate,
+    misici1,
+    setMisici1,
+    misici2,
+    setMisici2,
+    misici3,
+    setMisici3,
+    misici4,
+    setMisici4,
+    misici5,
+    setMisici5,
   };
 
   return <AppContext.Provider value={values}>{children}</AppContext.Provider>;

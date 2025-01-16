@@ -1,33 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
 export default function ExerciseCard(props) {
+  const navigate = useNavigate();
   const [setsCompleted, setSetsCompleted] = useState(0);
   const { exercise, i } = props;
-  function handleSetIncrement() {
-    setSetsCompleted((prev) => {
-      const newSetsCompleted = (prev + 1) % 6;
-
-      // Ažuriraj odgovarajuću vezbu odmah koristeći novu vrednost
-      if (i === 0) {
-        setVezba1(newSetsCompleted);
-      }
-      if (i === 1) {
-        setVezba2(newSetsCompleted);
-      }
-      if (i === 2) {
-        setVezba3(newSetsCompleted);
-      }
-      if (i === 3) {
-        setVezba4(newSetsCompleted);
-      }
-      if (i === 4) {
-        setVezba5(newSetsCompleted);
-      }
-
-      return newSetsCompleted; // Vrati novu vrednost stanja
-    });
-  }
-
   const {
     vezba1,
     setVezba1,
@@ -39,24 +17,104 @@ export default function ExerciseCard(props) {
     setVezba4,
     vezba5,
     setVezba5,
+    misici1,
+    setMisici1,
+    misici2,
+    setMisici2,
+    misici3,
+    setMisici3,
+    misici4,
+    setMisici4,
+    misici5,
+    setMisici5,
+    date,
+    value,
   } = useContext(AppContext);
-  // function setVezbe() {
-  //   if (i == 0) {
-  //     setVezba1(setsCompleted);
-  //   }
-  //   if (i == 1) {
-  //     setVezba2(setsCompleted);
-  //   }
-  //   if (i == 2) {
-  //     setVezba3(setsCompleted);
-  //   }
-  //   if (i == 3) {
-  //     setVezba4(setsCompleted);
-  //   }
-  //   if (i == 4) {
-  //     setVezba5(setsCompleted);
-  //   }
-  // }
+  useEffect(() => {
+    // Ažuriraj mišiće za određenu vežbu kada se izvrši increment
+    if (setsCompleted !== 0) {
+      if (i === 0) {
+        setVezba1(setsCompleted);
+        setMisici1(exercise.muscles);
+      }
+      if (i === 1) {
+        setVezba2(setsCompleted);
+        setMisici2(exercise.muscles);
+      }
+      if (i === 2) {
+        setVezba3(setsCompleted);
+        setMisici3(exercise.muscles);
+      }
+      if (i === 3) {
+        setVezba4(setsCompleted);
+        setMisici4(exercise.muscles);
+      }
+      if (i === 4) {
+        setVezba5(setsCompleted);
+        setMisici5(exercise.muscles);
+      }
+    }
+  }, [
+    setsCompleted,
+    i,
+    exercise.muscles,
+    setVezba1,
+    setVezba2,
+    setVezba3,
+    setVezba4,
+    setVezba5,
+    setMisici1,
+    setMisici2,
+    setMisici3,
+    setMisici4,
+    setMisici5,
+  ]);
+  function handleSetIncrement() {
+    setSetsCompleted((prev) => {
+      return (prev + 1) % 6;
+    });
+  }
+  const zavrsiTrening = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token"); // Uzmi token iz localStorage
+    if (!token) {
+      alert("Niste prijavljeni!");
+      return;
+    }
+    const workoutData = {
+      date,
+      misici1,
+      vezba1,
+      misici2,
+      vezba2,
+      misici3,
+      vezba3,
+      misici4,
+      vezba4,
+      misici5,
+      vezba5,
+      value,
+    };
+    try {
+      // Slanje podataka zajedno sa tokenom u zaglavlju
+      const response = await axios.post(
+        "http://localhost:3000/auth/addWorkout",
+        workoutData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Slanje tokena u zaglavlju
+          },
+        }
+      );
+      alert(response.data.message);
+      if (response.status === 201) {
+        navigate("/profile");
+      }
+    } catch (err) {
+      console.error("Error adding workout", err);
+      alert("Došlo je do greške pri dodavanju podataka o treningu.");
+    }
+  };
   return (
     <div className="p-4 rounded-4 flex flex-col gap-4 bg-slate-950 sm:flex-wrap">
       <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-x-4">
@@ -107,9 +165,21 @@ export default function ExerciseCard(props) {
         </button>
       </div>
       <button
-        onClick={() => {
-          console.log(vezba1, vezba2, vezba3, vezba4, vezba5);
-        }}
+        // onClick={() => {
+        //   console.log(
+        //     vezba1,
+        //     vezba2,
+        //     vezba3,
+        //     vezba4,
+        //     vezba5,
+        //     misici1,
+        //     misici2,
+        //     misici3,
+        //     misici4,
+        //     misici5
+        //   );
+        // }}
+        onClick={zavrsiTrening}
       >
         nebitno
       </button>

@@ -40,6 +40,14 @@ export default function Profile() {
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
   const { value, setValue } = useContext(AppContext);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const savedUsername = localStorage.getItem("username");
+    if (savedUsername) {
+      setUsername(savedUsername);
+    }
+  }, []);
   function klikni() {
     setValue(5);
   }
@@ -308,7 +316,11 @@ export default function Profile() {
     <div className="main">
       <header className="header">
         <div className="left">
-          <h1 className="text-2xl ">Hello,Haris!</h1>
+          <h1 className="text-2xl ">
+            Hello,
+            {username.charAt(0).toUpperCase() + username.slice(1).toLowerCase()}
+            !
+          </h1>
           <p className="">Always stay motivated</p>
         </div>
         <button onClick={goToTraining} className=" button2 text white">

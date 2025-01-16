@@ -25,6 +25,7 @@ export default function Login() {
       });
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", response.data.username);
         navigate("/");
       }
     } catch (err) {

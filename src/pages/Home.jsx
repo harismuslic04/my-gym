@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as React from "react";
+import axios from "axios";
 import Hero from "../components/Hero";
+import { Navigate, useNavigate } from "react-router-dom";
 import Generator from "../components/Generator";
 import Workout from "../components/Workout";
 import { generateWorkout } from "../utils/functions";
@@ -10,6 +12,26 @@ import StarIcon from "@mui/icons-material/Star";
 import "../stilovi/home.css";
 import { AppContext } from "../components/AppContext";
 export default function Home() {
+  const navigate = useNavigate();
+  const fetchUser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get("http://localhost:3000/auth/home", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.status !== 201) {
+        navigate("/login");
+      }
+    } catch (err) {
+      navigate("/login");
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
   const { value, setValue } = React.useContext(AppContext);
   const [hover, setHover] = React.useState(-1);
 
