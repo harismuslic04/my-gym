@@ -44,7 +44,7 @@ export default function Profile() {
   const [barData4, setBarData4] = useState(0);
   const { value, setValue, workout, setWorkout } = useContext(AppContext);
   const [username, setUsername] = useState("");
-
+  const [filteredWorkout, setFilteredWorkout] = useState("");
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
@@ -75,28 +75,28 @@ export default function Profile() {
     setValue(5);
   }
 
-  useEffect(() => {
-    if (selectedData) {
-      // Uzimanje podataka iz selectedData i ažuriranje barData
-      const newBarData = selectedData.muscleGroups.map((group) => group.name);
-      const newBarData2 = selectedData.muscleGroups.map((group) => group.sets);
-      const newBarDat3 = selectedData.muscleGroups.map(
-        (group) => group.percentage
-      ); // Na primer, koristi 'sets' za bar graf
-      const newBarData4 = selectedData.totalCaloriesBurned;
-      setBarData(newBarData); // Ažurira podatke za bar graf
-      setBarData2(newBarData2);
-      setBarData3(newBarDat3);
-      setBarData4(newBarData4);
-      console.log(newBarData);
-      console.log(value);
-    } else {
-      setBarData(null); // Ažurira podatke za bar graf
-      setBarData2(null);
-      setBarData3(null);
-      setBarData4(null);
-    }
-  }, [selectedData]);
+  // useEffect(() => {
+  //   if (selectedData) {
+  //     // Uzimanje podataka iz selectedData i ažuriranje barData
+  //     const newBarData = selectedData.muscleGroups.map((group) => group.name);
+  //     const newBarData2 = selectedData.muscleGroups.map((group) => group.sets);
+  //     const newBarDat3 = selectedData.muscleGroups.map(
+  //       (group) => group.percentage
+  //     ); // Na primer, koristi 'sets' za bar graf
+  //     const newBarData4 = selectedData.totalCaloriesBurned;
+  //     setBarData(newBarData); // Ažurira podatke za bar graf
+  //     setBarData2(newBarData2);
+  //     setBarData3(newBarDat3);
+  //     setBarData4(newBarData4);
+  //     console.log(newBarData);
+  //     console.log(value);
+  //   } else {
+  //     setBarData(null); // Ažurira podatke za bar graf
+  //     setBarData2(null);
+  //     setBarData3(null);
+  //     setBarData4(null);
+  //   }
+  // }, [selectedData]);
 
   const goToTraining = () => {
     setTimeout(() => {
@@ -150,8 +150,9 @@ export default function Profile() {
       setSelectedDate(date); // Postavlja novi odabrani datum
       console.log("Kliknuti datum:", date.format("YYYY-MM-DD")); // Ispisuje datum u konzolu
 
-      const podaci = statistika.workoutLog.find(
-        (entry) => entry.date == date.format("YYYY-MM-DD")
+      const podaci = workout.find(
+        (entry) =>
+          dayjs(entry.date).format("YYYY-MM-DD") === date.format("YYYY-MM-DD")
       );
 
       if (podaci) {
@@ -194,26 +195,68 @@ export default function Profile() {
     );
   }
   function BasicBars() {
+    if (
+      !selectedData ||
+      (!selectedData.misici1?.trim() && !selectedData.misici2?.trim())
+    ) {
+      return null; // Ako ne postoji, ne prikazujemo ništa
+    }
+
+    // Grupisanje mišića i sabiranje setova
+    const misiciSetovi = [
+      {
+        misici: selectedData.misici1,
+        setovi: Number(selectedData.setovi1) || 0,
+      },
+      {
+        misici: selectedData.misici2,
+        setovi: Number(selectedData.setovi2) || 0,
+      },
+      {
+        misici: selectedData.misici3,
+        setovi: Number(selectedData.setovi3) || 0,
+      },
+      {
+        misici: selectedData.misici4,
+        setovi: Number(selectedData.setovi4) || 0,
+      },
+      {
+        misici: selectedData.misici5,
+        setovi: Number(selectedData.setovi5) || 0,
+      },
+    ];
+
+    // Grupisanje mišića po imenu i sabiranje njihovih setova
+    const groupedData = misiciSetovi.reduce((acc, { misici, setovi }) => {
+      if (misici) {
+        acc[misici] = (acc[misici] || 0) + setovi; // Sabiranje setova za isti mišić
+      }
+      return acc;
+    }, {});
+
+    const misici = Object.keys(groupedData); // Imena mišića
+    const setovi = Object.values(groupedData); // Sabirani setovi
+
+    // Ako nema validnih podataka, ne prikazujemo grafikon
+    if (!misici.length || !setovi.some((value) => value > 0)) {
+      return null;
+    }
+
     return (
-      barData && (
-        <BarChart
-          xAxis={[
-            {
-              scaleType: "band",
-              data: barData,
-            },
-          ]}
-          series={[
-            { data: [0, 0, 0] },
-            { data: [barData2[0], barData2[1], barData2[2], barData2[3]] },
-            { data: [0, 0, 0] },
-          ]}
-          width={320}
-          height={300}
-        />
-      )
+      <BarChart
+        xAxis={[
+          {
+            scaleType: "band",
+            data: misici,
+          },
+        ]}
+        series={[{ data: [0, 0, 0] }, { data: setovi }, { data: [0, 0, 0] }]}
+        width={320}
+        height={300}
+      />
     );
   }
+
   function PieActiveArc() {
     return (
       <PieChart
@@ -274,22 +317,62 @@ export default function Profile() {
   function PieChartDemo() {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
+    if (
+      !selectedData ||
+      (!selectedData.misici1?.trim() && !selectedData.misici2?.trim())
+    ) {
+      return null; // Ako ne postoji, ne prikazujemo ništa
+    }
 
+    // Grupisanje mišića i sabiranje setova
+    const misiciSetovi = [
+      {
+        misici: selectedData.misici1,
+        setovi: Number(selectedData.setovi1) || 0,
+      },
+      {
+        misici: selectedData.misici2,
+        setovi: Number(selectedData.setovi2) || 0,
+      },
+      {
+        misici: selectedData.misici3,
+        setovi: Number(selectedData.setovi3) || 0,
+      },
+      {
+        misici: selectedData.misici4,
+        setovi: Number(selectedData.setovi4) || 0,
+      },
+      {
+        misici: selectedData.misici5,
+        setovi: Number(selectedData.setovi5) || 0,
+      },
+    ];
+
+    // Grupisanje mišića po imenu i sabiranje njihovih setova
+    const groupedData = misiciSetovi.reduce((acc, { misici, setovi }) => {
+      if (misici) {
+        acc[misici] = (acc[misici] || 0) + setovi; // Sabiranje setova za isti mišić
+      }
+      return acc;
+    }, {});
+
+    const misici = Object.keys(groupedData); // Imena mišića
+    const setovi = Object.values(groupedData); // Sabirani setovi za svaki mišić
+
+    // Ukupan broj setova
+    const totalSetovi = setovi.reduce((sum, value) => sum + value, 0);
+
+    // Računanje procenata
+    const procenti = setovi.map((value) =>
+      ((value / totalSetovi) * 100).toFixed(2)
+    ); // Procenti sa 2 decimale
     useEffect(() => {
       const documentStyle = getComputedStyle(document.documentElement);
       const data = {
-        labels: barData,
+        labels: misici,
         datasets: [
           {
-            data: barData3
-              ? [
-                  barData3[0],
-                  barData3[1],
-                  barData3[2],
-                  barData3[3],
-                  barData3[4],
-                ]
-              : [0, 0, 0],
+            data: procenti,
           },
         ],
       };
@@ -352,6 +435,10 @@ export default function Profile() {
         <button
           onClick={() => {
             console.log(workout);
+            console.log(selectedData);
+            console.log(selectedData.rating);
+            console.log(selectedData.misici1);
+            console.log(selectedData.setovi1);
           }}
           className=" button1 text-white"
         >
@@ -379,28 +466,26 @@ export default function Profile() {
             <h1>{selectedData.date}</h1>
           </div>
         )}
-        {barData && (
+        {selectedData && (
           <div className="sets">
-            {JSON.stringify(barData) !== JSON.stringify([0, 0, 0]) && (
-              <div className="sets2">
-                <BasicBars />
-              </div>
-            )}
+            <div className="sets2">
+              <BasicBars />
+            </div>
           </div>
         )}
-        {!barData && (
+        {!selectedData && (
           <div className="nemapodataka">
             <h1>There are no recorded activities for this day.</h1>
           </div>
         )}
-        {barData && (
+        {selectedData && (
           <div className="muscles">
             <div className="muscles2">
               <PieChartDemo />
             </div>
           </div>
         )}
-        {barData && (
+        {selectedData && (
           <div className="calories">
             <div className="calories2">
               <CompositionExample />
