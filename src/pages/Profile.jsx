@@ -299,19 +299,25 @@ export default function Profile() {
 
   function CompositionExample() {
     return (
-      barData4 && (
-        <GaugeContainer
-          width={200}
-          height={200}
-          startAngle={-110}
-          endAngle={110}
-          value={barData4 * 0.1}
-        >
-          <GaugeReferenceArc />
-          <GaugeValueArc />
-          <GaugePointer />
-        </GaugeContainer>
-      )
+      <GaugeContainer
+        width={200}
+        height={200}
+        startAngle={-110}
+        endAngle={110}
+        value={
+          (selectedData?.setovi1 +
+            selectedData?.setovi2 +
+            selectedData?.setovi3 +
+            selectedData?.setovi4 +
+            selectedData?.setovi5) *
+          20 *
+          0.2
+        }
+      >
+        <GaugeReferenceArc />
+        <GaugeValueArc />
+        <GaugePointer />
+      </GaugeContainer>
     );
   }
   function PieChartDemo() {
@@ -439,6 +445,15 @@ export default function Profile() {
             console.log(selectedData.rating);
             console.log(selectedData.misici1);
             console.log(selectedData.setovi1);
+            console.log(selectedData.date);
+            console.log(
+              (selectedData?.setovi1 +
+                selectedData?.setovi2 +
+                selectedData?.setovi3 +
+                selectedData?.setovi4 +
+                selectedData?.setovi5) *
+                20
+            );
           }}
           className=" button1 text-white"
         >
@@ -463,7 +478,7 @@ export default function Profile() {
         <h1 className="text-2xl text-white">Physical Activity</h1>
         {selectedData && (
           <div className="profileDatum">
-            <h1>{selectedData.date}</h1>
+            <h1>{selectedData.date.split("T")[0]}</h1>
           </div>
         )}
         {selectedData && (
@@ -492,7 +507,14 @@ export default function Profile() {
             </div>
 
             <h1 className="text-1xl text-black">Calories burned</h1>
-            <p className="text-black">{barData4}</p>
+            <p className="text-black">
+              {(selectedData?.setovi1 +
+                selectedData?.setovi2 +
+                selectedData?.setovi3 +
+                selectedData?.setovi4 +
+                selectedData?.setovi5) *
+                20}
+            </p>
           </div>
         )}
       </div>
