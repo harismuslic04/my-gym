@@ -155,7 +155,7 @@ export const EXERCISES = {
       equipment: ["dumbbells"],
     },
     unit: "reps", //vs duration
-    muscles: ["chest", "shoulders"],
+    muscles: ["chest"],
     description:
       "Standing with a weighted plate gripped eitherside, start with the plate down infront of your hips, and then raise the plate up infront of you to shoulder height, pausing at that height for a moment, before lowering the weight back down. Puff your chest up towards the ceiling while performing this exercise.",
     substitutes: ["standing dumbbell inline fly"],
@@ -210,7 +210,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["chest", "triceps"],
+    muscles: ["chest"],
     description:
       "When in the dip position, ensure you are leaning forward over your hands and slowly lower your body until your elbows are parallel with the ground. Then press back up. Keep your elbow flare to a maximum of 45 degrees.",
     substitutes: ["Chair dip"],
@@ -1119,7 +1119,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["quads", "glutes"],
+    muscles: ["quads"],
     description:
       "Body weight or with dumbbells in each hand, lunge forward, elevating your rear leg up approximately 20 to 30cm, 1ft, above the ground. Keep your weight over your front leg, and lunge your body down until your front thigh is parallel with the ground.",
     substitutes: ["lunges", "legpress"],
@@ -1132,7 +1132,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["quads", "glutes"],
+    muscles: ["quads"],
     description:
       "Continuously lunge forward, slowly dropping your rear knee to touch the ground with each subsequent lunge. Ensure your body weight stays predominantly over your front leg.",
     substitutes: ["front squats", "bulgarian split squats"],
@@ -1179,7 +1179,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["quads", "glutes"],
+    muscles: ["quads"],
     description:
       "Without jumping, step up onto an evelated surface. They key is to slowly lower yourself back down on one leg without falling.",
     substitutes: ["lunges", "front squats"],
@@ -1225,7 +1225,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["hamstrings", "glutes"],
+    muscles: ["hamstrings"],
     description:
       "On the back extension machine, lock your feet in place and while lowering your torso down over the front of the machine, resist the motion by trying to curl your heels backwards to your bum, against the foot stop.",
     substitutes: ["dumbbell rdls", "seated hamstring curl"],
@@ -1238,7 +1238,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["hamstrings", "glutes"],
+    muscles: ["hamstrings"],
     description:
       "Placing on foot forward of the other, lean your weight onto the front foot and track the dumbbells up and down said forward leg. Ensure you are maintain a straight back while performing this exercise.",
     substitutes: ["barbell rdls", "hamstring back extensions"],
@@ -1355,7 +1355,7 @@ export const EXERCISES = {
       equipment: [],
     },
     unit: "reps", //vs duration
-    muscles: ["back", "hamstrings"],
+    muscles: ["back"],
     description:
       "Standing with the bar over your feet, grip it overhand shoulder width apart, while ensuring you back remains straight throughout the entire exercise. Begin the lift by straightening your legs, dragging the bar up your shins, and as soon as the bar is above knee height, straighten your torso and lean back to heavy the bar off the ground. In reverse, you start standing tall, and with a micro bend in your knees, you hinge at the hips (maintaining a straight) back until the bar is over you knees, at which point your hips stop hinging and your knees start bending until the bar touches the ground. This exercise may also be done with a sumo stance.",
     substitutes: ["romanian deadlifts"],

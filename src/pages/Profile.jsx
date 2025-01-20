@@ -3,6 +3,7 @@ import "../stilovi/Profile.css";
 import * as React from "react";
 import { pieArcLabelClasses } from "@mui/x-charts/PieChart";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { AppContext } from "../components/AppContext";
 import statistika from "../utils/statistika.json";
 
@@ -36,6 +37,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Profile() {
+  dayjs.extend(utc);
   const navigate = useNavigate();
   const [selectedData, setSelectedData] = useState(null);
   const [barData, setBarData] = useState([0, 0, 0]);
@@ -251,7 +253,7 @@ export default function Profile() {
           },
         ]}
         series={[{ data: [0, 0, 0] }, { data: setovi }, { data: [0, 0, 0] }]}
-        width={320}
+        width={360}
         height={300}
       />
     );
@@ -478,7 +480,7 @@ export default function Profile() {
         <h1 className="text-2xl text-white">Physical Activity</h1>
         {selectedData && (
           <div className="profileDatum">
-            <h1>{selectedData.date.split("T")[0]}</h1>
+            <h1>{dayjs.utc(selectedData.date).local().format("YYYY-MM-DD")}</h1>
           </div>
         )}
         {selectedData && (

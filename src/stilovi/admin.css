@@ -175,3 +175,17 @@
 .removeikona {
   cursor: pointer;
 }
+.admincustomers input {
+  background-color: rgb(204, 195, 195);
+  position: absolute;
+  left: 5.5rem;
+  border: none;
+  height: 3rem;
+  top: 0.5rem;
+  border-radius: 20px;
+  color: black;
+  padding-left: 15px;
+}
+.admincustomers input::placeholder {
+  color: black;
+}

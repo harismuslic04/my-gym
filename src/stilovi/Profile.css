@@ -21,6 +21,7 @@
   position: relative;
   top: 0rem;
   width: 100%;
+
   align-items: center;
 }
 .left {
@@ -63,7 +64,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 85%;
+  width: 90%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   height: 4rem;
@@ -76,11 +77,11 @@
 
 .stats {
   background-color: rgb(240, 248, 255);
-  width: 61%;
+  width: 63%;
   height: 25rem;
   position: relative;
   top: 2rem;
-  left: 6.3rem;
+  left: 4.3rem;
   border-radius: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -105,10 +106,11 @@
 }
 .muscles {
   height: 80%;
-
+  width: 100%;
   position: relative;
   top: 20%;
-  right: 1rem;
+
+  right: 2rem;
   border-left: 1px solid rgb(44, 42, 42);
   border-right: 1px solid rgb(44, 42, 42);
   /* display: flex;
@@ -143,7 +145,7 @@
   height: 25rem;
   background-color: rgb(79, 231, 241);
   position: absolute;
-  width: 23%;
+  width: 25.5%;
   left: 148vh;
   border-radius: 30px;
   top: 13rem;
