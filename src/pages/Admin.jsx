@@ -9,6 +9,7 @@ import { useState } from "react";
 
 export default function Admin() {
   const [searchValue, setSearchValue] = useState("");
+  const [activeUsers, setActiveUsers] = useState(0);
   const { people, setPeople } = useContext(AppContext);
   const navigate = useNavigate();
   const filteredPeople = people.filter((ele, eleIndex) => {
@@ -16,12 +17,42 @@ export default function Admin() {
     if (ele.username.toLowerCase().includes(searchValue)) return true;
     return false;
   });
+  const fetchActiveUsers = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/auth/activeUsers"
+      );
+      console.log(response.data);
+
+      setActiveUsers(response.data.activeUsers);
+    } catch (err) {
+      console.error("Error fetching active users", err);
+    }
+  };
+  useEffect(() => {
+    fetchActiveUsers();
+    const interval = setInterval(fetchActiveUsers, 10000);
+    return () => clearInterval(interval);
+  }, []);
   function removeUser(id) {
     const filteredUser3 = people.filter((user) => user.id !== id);
     console.log(id);
     setPeople(filteredUser3);
   }
-
+  const deleteUser = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(
+        `http://localhost:3000/auth/deleteUser/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.error("Error deleting", err.response.data.message);
+    }
+  };
   // Paginate kontrola
   function PaginationControlled() {
     const handleChange = (event, value) => {
@@ -32,7 +63,7 @@ export default function Admin() {
     return (
       <Stack spacing={2}>
         <Pagination
-          count={Math.floor(people.length / 6) + 1} // Popravka: koristi filteredUser2
+          count={Math.floor(filteredPeople.length / 6)} // Popravka: koristi filteredUser2
           page={page + 1}
           onChange={handleChange}
         />
@@ -93,13 +124,7 @@ export default function Admin() {
           </div>
           <div className="drugideodesno">
             <p>Members</p>
-            <button
-              onClick={() => {
-                console.log(people);
-              }}
-            >
-              nista
-            </button>
+
             <h1>452</h1>
           </div>
         </div>
@@ -109,7 +134,7 @@ export default function Admin() {
           </div>
           <div className="trecideodesno">
             <p>Active Now</p>
-            <h1>31</h1>
+            <h1>{activeUsers}</h1>
           </div>
         </div>
       </div>
@@ -143,16 +168,19 @@ export default function Admin() {
                   <div className="admincustomerinfouseri2">
                     <i
                       className="removeikona fa-solid fa-user-xmark"
-                      onClick={() => removeUser(people.id)}
+                      onClick={() => {
+                        removeUser(people.id);
+                        deleteUser(people.id);
+                      }}
                     ></i>
                   </div>
                 </div>
               );
             })}
         </div>
-        <div className="pages">
-          <PaginationControlled />
-        </div>
+      </div>
+      <div className="pages">
+        <PaginationControlled />
       </div>
     </div>
   );

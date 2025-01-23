@@ -44,9 +44,24 @@ export default function Profile() {
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
-  const { value, setValue, workout, setWorkout } = useContext(AppContext);
-  const [username, setUsername] = useState("");
+  const { value, setValue, workout, setWorkout, email } =
+    useContext(AppContext);
+  const username = localStorage.getItem("username");
   const [filteredWorkout, setFilteredWorkout] = useState("");
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/auth/logout", {
+        email,
+      });
+      localStorage.removeItem("token");
+
+      navigate("/login");
+
+      alert("Logout successful");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
@@ -442,12 +457,13 @@ export default function Profile() {
         </button>
         <button
           onClick={() => {
+            handleLogout();
             console.log(workout);
             console.log(selectedData);
-            console.log(selectedData.rating);
-            console.log(selectedData.misici1);
-            console.log(selectedData.setovi1);
-            console.log(selectedData.date);
+            console.log(selectedData?.rating);
+            console.log(selectedData?.misici1);
+            console.log(selectedData?.setovi1);
+            console.log(selectedData?.date);
             console.log(
               (selectedData?.setovi1 +
                 selectedData?.setovi2 +
@@ -469,7 +485,7 @@ export default function Profile() {
         </div>
         <div>
           <p>Average rating</p>
-          <p className="drugip">{workout?.[0]?.rating || "N/A"}</p>
+          <p className="drugip">{selectedData?.rating || "N/A"}</p>
         </div>
         <div>
           <p>Time remaining</p>

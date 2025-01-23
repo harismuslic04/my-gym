@@ -58,9 +58,7 @@
   font-size: 2rem;
   font-weight: 600;
 }
-.prvideodesno {
-  /* background-color: green; */
-}
+
 .adminstats .drugideo {
   display: flex;
   border-left: 1px gray solid;
@@ -188,4 +186,113 @@
 }
 .admincustomers input::placeholder {
   color: black;
+}
+/* Defaultni stilovi (za desktop i veće ekrane) */
+
+/* Svi već postojeći stilovi */
+
+/* Dodatni upiti za vrlo male ekrane (npr. telefoni u vertikalnom položaju) */
+@media (max-width: 480px) {
+  .adminheader {
+    height: 3rem;
+    margin-top: 1rem;
+    background-color: transparent;
+  }
+  .adminheader h1 {
+    font-size: 1rem;
+  }
+  .adminmain {
+    background-color: rgb(118, 142, 150);
+    height: 952px;
+    width: 100%;
+  }
+
+  .adminstats {
+    /* gap: 0.5rem; */
+    flex-direction: column;
+    height: 25%;
+    padding: 15px;
+  }
+  .adminstats .prvideo {
+    width: 100%;
+  }
+  .adminstats .drugideo {
+    border: none;
+    width: 100%;
+    position: relative;
+    left: 0%;
+    display: flex;
+    justify-content: start;
+  }
+  .adminstats .trecideo {
+    border: none;
+    width: 100%;
+  }
+  .admincustomers {
+    padding: 0rem;
+    position: relative;
+    height: 700px;
+
+    overflow: hidden;
+  }
+
+  .admincustomersinfoheader h1 {
+    font-size: 0.8rem;
+  }
+
+  .admincustomersinput {
+    width: 100%;
+    height: 2.5rem;
+  }
+
+  .ljudi {
+    width: 100%;
+    display: block;
+    gap: 0.5rem;
+  }
+
+  .prvideo i {
+    font-size: 20px;
+  }
+  .drugideo i {
+    font-size: 20px;
+  }
+  .trecideo i {
+    font-size: 20px;
+  }
+  .prvideolevo {
+    width: 3rem;
+    height: 3rem;
+  }
+  .drugideolevo {
+    width: 3rem;
+    height: 3rem;
+  }
+  .trecideolevo {
+    width: 3rem;
+    height: 3rem;
+  }
+  .prvideodesno h1 {
+    font-size: 1rem;
+  }
+  .drugideodesno h1 {
+    font-size: 1rem;
+  }
+  .trecideodesno h1 {
+    font-size: 1rem;
+  }
+  .admincustomersinfoheader {
+    display: none;
+  }
+  .admincustomers input {
+    position: relative;
+    left: 0;
+    top: 2rem;
+
+    height: 5rem;
+  }
+  .admincustomerinfouseri {
+    position: relative;
+    bottom: 4rem;
+  }
 }
