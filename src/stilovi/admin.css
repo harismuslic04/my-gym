@@ -166,6 +166,10 @@
 
   width: 100%;
 }
+.admincustomerinfouseri2 i {
+  position: relative;
+  right: 1rem;
+}
 .pages {
   position: relative;
   bottom: 1rem;
@@ -186,6 +190,9 @@
 }
 .admincustomers input::placeholder {
   color: black;
+}
+.emailovi {
+  width: 40%;
 }
 /* Defaultni stilovi (za desktop i veće ekrane) */
 
@@ -250,7 +257,10 @@
     display: block;
     gap: 0.5rem;
   }
-
+  .admincustomerinfouseri2 i {
+    position: relative;
+    left: 0rem;
+  }
   .prvideo i {
     font-size: 20px;
   }
@@ -288,7 +298,6 @@
     position: relative;
     left: 0;
     top: 2rem;
-
     height: 5rem;
   }
   .admincustomerinfouseri {

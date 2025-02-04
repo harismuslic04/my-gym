@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as React from "react";
 import axios from "axios";
 import Hero from "../components/Hero";
@@ -11,8 +11,77 @@ import Box from "@mui/material/Box";
 import StarIcon from "@mui/icons-material/Star";
 import "../stilovi/home.css";
 import { AppContext } from "../components/AppContext";
+import { resolveTimeViewsResponse } from "@mui/x-date-pickers/internals";
 export default function Home() {
+  const {
+    vezba1,
+    setVezba1,
+    vezba2,
+    setVezba2,
+    vezba3,
+    setVezba3,
+    vezba4,
+    setVezba4,
+    vezba5,
+    setVezba5,
+    misici1,
+    setMisici1,
+    misici2,
+    setMisici2,
+    misici3,
+    setMisici3,
+    misici4,
+    setMisici4,
+    misici5,
+    setMisici5,
+    date,
+    setDate,
+  } = useContext(AppContext);
   const navigate = useNavigate();
+  const zavrsiTrening = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token"); // Uzmi token iz localStorage
+    if (!token) {
+      alert("Niste prijavljeni!");
+      return;
+    }
+    const workoutData = {
+      date,
+      misici1,
+      vezba1,
+      misici2,
+      vezba2,
+      misici3,
+      vezba3,
+      misici4,
+      vezba4,
+      misici5,
+      vezba5,
+      value,
+    };
+    try {
+      // Slanje podataka zajedno sa tokenom u zaglavlju
+      const response = await axios.post(
+        "http://localhost:3000/auth/addWorkout",
+        workoutData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Slanje tokena u zaglavlju
+          },
+        }
+      );
+      // alert(response.data.message);
+      if (response.status === 201) {
+        navigate("/profile");
+      }
+      if (response.status === 400) {
+        return alert("You alreadu trained today");
+      }
+    } catch (err) {
+      console.error("Error adding workout", err);
+      alert("Došlo je do greške pri dodavanju podataka o treningu.");
+    }
+  };
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -60,7 +129,7 @@ export default function Home() {
         <Rating
           name="hover-feedback"
           value={value}
-          precision={0.5}
+          precision={1}
           getLabelText={getLabelText}
           onChange={(event, newValue) => {
             setValue(newValue);
@@ -109,6 +178,7 @@ export default function Home() {
         <div className="homerating">
           <h1>Rate the training</h1>
           <HoverRating />
+          <button onClick={zavrsiTrening}>submit</button>
         </div>
       )}
     </main>

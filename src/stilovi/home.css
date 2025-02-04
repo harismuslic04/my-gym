@@ -14,3 +14,28 @@
   left: 1rem;
   font-size: 2rem;
 }
+@media (max-width: 480px) {
+  .homerating {
+    position: relative;
+    left: -2rem;
+    font-size: 20px;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+  }
+  .homerating h1 {
+    position: relative;
+    left: 3rem;
+    font-size: 30px;
+  }
+  .homerating button {
+    position: relative;
+    left: 3rem;
+    background-color: transparent;
+    border: 1px solid rgb(60, 60, 104);
+    width: 7rem;
+    height: 4rem;
+    border-radius: 25px;
+    bottom: 1rem;
+  }
+}

@@ -4,7 +4,7 @@ import React from "react";
 const AppContext = createContext(); // Kreiranje konteksta
 
 function ContextProvider({ children }) {
-  const [value, setValue] = useState(3); // Početna vrednost za kontekst
+  const [value, setValue] = useState(5); // Početna vrednost za kontekst
   const [signup, setSignup] = useState(false);
   const [email, setEmail] = useState(" ");
   const [username, setUsername] = useState("");

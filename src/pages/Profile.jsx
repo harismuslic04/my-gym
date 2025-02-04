@@ -44,17 +44,19 @@ export default function Profile() {
   const [barData2, setBarData2] = useState([0, 0, 0]);
   const [barData3, setBarData3] = useState([0, 0, 0]);
   const [barData4, setBarData4] = useState(0);
-  const { value, setValue, workout, setWorkout, email } =
-    useContext(AppContext);
+  const email = localStorage.getItem("email");
+  const { value, setValue, workout, setWorkout } = useContext(AppContext);
   const username = localStorage.getItem("username");
   const [filteredWorkout, setFilteredWorkout] = useState("");
+  const today = dayjs().format("YYYY-MM-DD");
+  const [selectedDate, setSelectedDate] = useState(today);
   const handleLogout = async () => {
     try {
       const response = await axios.post("http://localhost:3000/auth/logout", {
         email,
       });
       localStorage.removeItem("token");
-
+      console.log(email);
       navigate("/login");
 
       alert("Logout successful");
@@ -80,40 +82,23 @@ export default function Profile() {
           }
         );
         setWorkout(response.data);
+        console.log(workout);
+        const podaci = workout.find(
+          (entry) => dayjs(entry.date).format("YYYY-MM-DD") === today
+        );
+        console.log(podaci);
+        setWorkout(podaci);
       } catch (err) {
         console.error("Greška prilikom dobijanja podataka o treninzima:", err);
       }
     };
 
     fetchUser();
-  }, [navigate]);
+  }, []);
 
   function klikni() {
-    setValue(5);
+    console.log(email);
   }
-
-  // useEffect(() => {
-  //   if (selectedData) {
-  //     // Uzimanje podataka iz selectedData i ažuriranje barData
-  //     const newBarData = selectedData.muscleGroups.map((group) => group.name);
-  //     const newBarData2 = selectedData.muscleGroups.map((group) => group.sets);
-  //     const newBarDat3 = selectedData.muscleGroups.map(
-  //       (group) => group.percentage
-  //     ); // Na primer, koristi 'sets' za bar graf
-  //     const newBarData4 = selectedData.totalCaloriesBurned;
-  //     setBarData(newBarData); // Ažurira podatke za bar graf
-  //     setBarData2(newBarData2);
-  //     setBarData3(newBarDat3);
-  //     setBarData4(newBarData4);
-  //     console.log(newBarData);
-  //     console.log(value);
-  //   } else {
-  //     setBarData(null); // Ažurira podatke za bar graf
-  //     setBarData2(null);
-  //     setBarData3(null);
-  //     setBarData4(null);
-  //   }
-  // }, [selectedData]);
 
   const goToTraining = () => {
     setTimeout(() => {
@@ -158,14 +143,11 @@ export default function Profile() {
     );
   }
 
-  const today = dayjs().format("YYYY-MM-DD");
-
   function BasicDateCalendar() {
-    const [selectedDate, setSelectedDate] = useState("2025-01-01");
-
     const handleDateChange = (date) => {
-      setSelectedDate(date); // Postavlja novi odabrani datum
+      setSelectedDate(date.format("YYYY-MM-DD")); // Postavlja novi odabrani datum
       console.log("Kliknuti datum:", date.format("YYYY-MM-DD")); // Ispisuje datum u konzolu
+      console.log(workout);
 
       const podaci = workout.find(
         (entry) =>
@@ -268,7 +250,7 @@ export default function Profile() {
           },
         ]}
         series={[{ data: [0, 0, 0] }, { data: setovi }, { data: [0, 0, 0] }]}
-        width={360}
+        width={400}
         height={300}
       />
     );
@@ -430,9 +412,7 @@ export default function Profile() {
             width: "95%",
             height: "300px",
             position: "relative",
-            left: "0.3rem",
-            top: "1rem",
-            color: "Red",
+            left: "",
           }}
         />
       </div>
@@ -452,31 +432,34 @@ export default function Profile() {
           </h1>
           <p className="">Always stay motivated</p>
         </div>
-        <button onClick={goToTraining} className=" button2 text white">
-          Start training
-        </button>
-        <button
-          onClick={() => {
-            handleLogout();
-            console.log(workout);
-            console.log(selectedData);
-            console.log(selectedData?.rating);
-            console.log(selectedData?.misici1);
-            console.log(selectedData?.setovi1);
-            console.log(selectedData?.date);
-            console.log(
-              (selectedData?.setovi1 +
-                selectedData?.setovi2 +
-                selectedData?.setovi3 +
-                selectedData?.setovi4 +
-                selectedData?.setovi5) *
-                20
-            );
-          }}
-          className=" button1 text-white"
-        >
-          Logout
-        </button>
+        <div className="right">
+          {" "}
+          <button onClick={goToTraining} className=" button2 text white">
+            Start training
+          </button>
+          <button
+            onClick={() => {
+              handleLogout();
+              console.log(workout);
+              console.log(selectedData);
+              console.log(selectedData?.rating);
+              console.log(selectedData?.misici1);
+              console.log(selectedData?.setovi1);
+              console.log(selectedData?.date);
+              console.log(
+                (selectedData?.setovi1 +
+                  selectedData?.setovi2 +
+                  selectedData?.setovi3 +
+                  selectedData?.setovi4 +
+                  selectedData?.setovi5) *
+                  20
+              );
+            }}
+            className=" button1 text-white"
+          >
+            Logout
+          </button>
+        </div>
       </header>
       <div className="info">
         <div>
@@ -494,11 +477,11 @@ export default function Profile() {
       </div>
       <div className="stats">
         <h1 className="text-2xl text-white">Physical Activity</h1>
-        {selectedData && (
-          <div className="profileDatum">
-            <h1>{dayjs.utc(selectedData.date).local().format("YYYY-MM-DD")}</h1>
-          </div>
-        )}
+
+        <div className="profileDatum">
+          <h1>{selectedDate}</h1>
+        </div>
+
         {selectedData && (
           <div className="sets">
             <div className="sets2">

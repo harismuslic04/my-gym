@@ -26,7 +26,10 @@ export default function Login() {
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("username", response.data.username);
+        localStorage.setItem("email", response.data.email);
         navigate("/");
+        setEmail(response.data.email);
+        console.log(response.data.email);
       }
     } catch (err) {
       console.log(err.mesage);

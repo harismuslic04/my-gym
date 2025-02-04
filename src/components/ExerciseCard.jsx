@@ -170,25 +170,6 @@ export default function ExerciseCard(props) {
           <p className="font-medium">{setsCompleted} / 5</p>
         </button>
       </div>
-      <button
-        // onClick={() => {
-        //   console.log(
-        //     vezba1,
-        //     vezba2,
-        //     vezba3,
-        //     vezba4,
-        //     vezba5,
-        //     misici1,
-        //     misici2,
-        //     misici3,
-        //     misici4,
-        //     misici5
-        //   );
-        // }}
-        onClick={zavrsiTrening}
-      >
-        nebitno
-      </button>
     </div>
   );
 }

@@ -10,6 +10,10 @@ import { useState } from "react";
 export default function Admin() {
   const [searchValue, setSearchValue] = useState("");
   const [activeUsers, setActiveUsers] = useState(0);
+  const username = localStorage.getItem("username");
+  const [totalCustomers, setTotalCustomers] = useState(0);
+  const [members, setMembers] = useState(0);
+
   const { people, setPeople } = useContext(AppContext);
   const navigate = useNavigate();
   const filteredPeople = people.filter((ele, eleIndex) => {
@@ -92,7 +96,9 @@ export default function Admin() {
             },
           }
         );
-        setPeople(response.data); // Postavljanje podataka u kontekst
+        setMembers(response.data.activeUsers);
+        setTotalCustomers(response.data.totalCustomers);
+        setPeople(response.data.rows); // Postavljanje podataka u kontekst
         // setFilteredUser2(response.data); // Postavljanje u stanje filteredUser2
         console.log(response.data);
       } catch (err) {
@@ -101,12 +107,14 @@ export default function Admin() {
     };
 
     fetchUser();
+    const interval = setInterval(fetchUser, 10000);
+    return () => clearInterval(interval);
   }, []); // Poboljšanje zavisnosti
 
   return (
     <div className="adminmain">
       <div className="adminheader">
-        <h1>Hello Haris 👋</h1>
+        <h1>Hello {username} 👋</h1>
       </div>
       <div className="adminstats">
         <div className="prvideo">
@@ -115,7 +123,7 @@ export default function Admin() {
           </div>
           <div className="prvideodesno">
             <p>Total Customers</p>
-            <h1>1723</h1>
+            <h1>{totalCustomers}</h1>
           </div>
         </div>
         <div className="drugideo">
@@ -125,7 +133,7 @@ export default function Admin() {
           <div className="drugideodesno">
             <p>Members</p>
 
-            <h1>452</h1>
+            <h1>{members}</h1>
           </div>
         </div>
         <div className="trecideo">
@@ -164,7 +172,9 @@ export default function Admin() {
                   <div className="admincustomerinfouseri2">
                     {people.username}
                   </div>
-                  <div className="admincustomerinfouseri2">{people.email}</div>
+                  <div className="admincustomerinfouseri2 emailovi">
+                    {people.email}
+                  </div>
                   <div className="admincustomerinfouseri2">
                     <i
                       className="removeikona fa-solid fa-user-xmark"

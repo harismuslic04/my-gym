@@ -142,7 +142,7 @@ export const EXERCISES = {
       equipment: ["dumbbells", "bands"],
     },
     unit: "reps", //vs duration
-    muscles: ["chest", "shoulders"],
+    muscles: ["chest"],
     description:
       "Standing with a dumbbell in either hand, palms facing forwards and chest puffed out, raise one dumbbell up and across your body until your palm is facing the ceiling and your hand has crossed your body. Lower slowing and repeat on the other side.",
     substitutes: ["inclined cable fly"],
@@ -503,7 +503,7 @@ export const EXERCISES = {
       equipment: ["dumbbells"],
     },
     unit: "reps", //vs duration
-    muscles: ["chest", "back"],
+    muscles: ["chest"],
     description:
       "Lying holding a single dumbbell as if it were a goblet directly above your chest, slowly track the dumbbell back over your head, keeping your elbows tucked. Track back as far as comfortable behind your head, and then return to the starting position.",
     substitutes: ["Inclined dumbbell fly"],

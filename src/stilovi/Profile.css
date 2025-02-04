@@ -35,7 +35,7 @@
   color: rgb(90, 90, 90);
 }
 .button1 {
-  right: 9rem;
+  right: 15rem;
   position: relative;
   border: 1px solid;
   width: 6rem;
@@ -50,7 +50,7 @@
   position: relative;
   border: 1px solid;
   color: white;
-  left: 19rem;
+  left: 0rem;
   width: 8rem;
   height: 3rem;
   border-radius: 30px;
@@ -170,4 +170,112 @@
   width: 10rem;
   left: 22rem;
   top: 0.6rem;
+}
+@media (max-width: 393px) {
+  .main {
+    width: 393px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .header .left {
+    position: relative;
+    width: 100%;
+    top: 2rem;
+    left: 0;
+    text-align: center;
+  }
+  .header .right {
+    gap: 2rem;
+    display: flex;
+    position: relative;
+    top: 3rem;
+  }
+  .button2 {
+    position: relative;
+    left: 0;
+  }
+  .button1 {
+    position: relative;
+    right: 0rem;
+    width: 8rem;
+    top: 0rem;
+  }
+  .info {
+    position: relative;
+    top: 4.5rem;
+  }
+  .info p {
+    font-size: 14px;
+    position: relative;
+  }
+  .drugip {
+    position: relative;
+    left: 2rem;
+  }
+  .stats {
+    position: relative;
+    top: 33rem;
+    width: 90%;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 200%;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+  .stats h1 {
+    position: relative;
+    left: 0rem;
+  }
+  .profileDatum {
+    position: relative;
+    left: 6rem;
+  }
+  .nemapodataka {
+    position: relative;
+    left: 1rem;
+    width: 90%;
+  }
+  .sets {
+    position: relative;
+    top: 2rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(182, 179, 179);
+    padding-bottom: 50px;
+  }
+  .sets2 {
+    position: relative;
+    right: 1rem;
+  }
+  .muscles {
+    border-right: none;
+    border-left: none;
+    position: relative;
+    left: 1.3rem;
+    top: 5rem;
+  }
+  .calories {
+    border-radius: 25px;
+    border-top: 1px solid rgb(44, 42, 42);
+    border-radius: 0 0 25px 25px;
+    background-color: rgb(240, 248, 255);
+    position: relative;
+  }
+  .calendar2 {
+    position: absolute;
+    left: 1.3rem;
+    width: 90%;
+    top: 15rem;
+  }
+  .calories p {
+    margin-bottom: 60px;
+  }
 }
