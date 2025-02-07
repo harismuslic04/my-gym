@@ -148,7 +148,7 @@ export default function Profile() {
       setSelectedDate(date.format("YYYY-MM-DD")); // Postavlja novi odabrani datum
       console.log("Kliknuti datum:", date.format("YYYY-MM-DD")); // Ispisuje datum u konzolu
       console.log(workout);
-
+      console.log(selectedDate);
       const podaci = workout.find(
         (entry) =>
           dayjs(entry.date).format("YYYY-MM-DD") === date.format("YYYY-MM-DD")
@@ -164,6 +164,7 @@ export default function Profile() {
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
+          value={dayjs(selectedDate)}
           onChange={handleDateChange}
           sx={{
             // Stilizacija svakog datuma

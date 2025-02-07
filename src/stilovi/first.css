@@ -412,3 +412,53 @@
   text-align: center;
   bottom: 1.6rem;
 }
+@media (max-width: 430px) {
+  .firstmain {
+    width: 100%;
+  }
+  .firstheader {
+    width: 70%;
+    height: 6rem;
+    gap: 0.5rem;
+  }
+  .firstabout h1 {
+    left: 0rem;
+    font-size: 2.5rem;
+    text-align: center;
+    top: 1rem;
+    width: 100%;
+  }
+  .firstabout p {
+    left: 2rem;
+    top: 3rem;
+    width: 60%;
+  }
+  .firstabout button {
+    left: 1.8rem;
+    top: 4rem;
+  }
+  .firstabout .slika img {
+    left: 8rem;
+  }
+  .firstunder1 .custom {
+    width: 90%;
+    left: 5%;
+    height: 30rem;
+    top: 0;
+  }
+  .firstunder1 h1 {
+    top: 0;
+    width: 86%;
+    font-size: 1.6rem;
+    left: 7%;
+    text-align: center;
+    top: 40rem;
+    font-weight: 900;
+  }
+  .firstunder1 p {
+    top: 40rem;
+    text-align: center;
+    width: 100%;
+    left: 0;
+  }
+}
