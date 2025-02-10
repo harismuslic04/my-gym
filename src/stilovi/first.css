@@ -461,4 +461,55 @@
     width: 100%;
     left: 0;
   }
+  .firstunder3 {
+    flex-direction: column;
+    height: 100rem;
+  }
+  .firstunder3levi {
+    width: 90%;
+    height: 40rem;
+  }
+  .firstunder3desni {
+    width: 90%;
+    height: 40rem;
+  }
+  .firstunder3levimuscle {
+    width: 63%;
+    height: 35%;
+    border-radius: 50%;
+    left: 0;
+    top: 1rem;
+  }
+
+  .firstunder3leviserije {
+    left: 12rem;
+    top: 0rem;
+    background-color: white;
+    width: 40%;
+    height: 30%;
+  }
+  .firstunder3leviaktivnost {
+    width: 40%;
+    left: 15rem;
+  }
+  .firstunder3 h1:nth-child(3) {
+    top: 3rem;
+  }
+  .firstunder3desnikalorije {
+    left: 0;
+  }
+  .firstunder3desnitime {
+    bottom: 3rem;
+    width: 40%;
+    height: 5rem;
+  }
+  .firstunder3desnical {
+    left: 12rem;
+    border-radius: 20px;
+  }
+  .firstunder3desnih1 {
+    width: 100%;
+    left: 0;
+    top: 2rem;
+  }
 }

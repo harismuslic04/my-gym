@@ -61,7 +61,7 @@ export default function Login() {
           <button onClick={handleSubmit}>Sign in</button>
         </div>
         <div className="loginright">
-          <h1>Hello, Friend!</h1>
+          <h1>New here?</h1>
           <p>Enjoy you personal details and start journey with us</p>
           <button
             onClick={() => {

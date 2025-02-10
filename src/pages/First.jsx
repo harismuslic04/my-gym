@@ -70,7 +70,9 @@ export default function First() {
           <div className="firstunder3leviserije">
             <img src={serije} alt="" />
           </div>
-          <h1>Challenge yourself with achievements</h1>
+          <h1 className="firstunder3levih1">
+            Challenge yourself with achievements
+          </h1>
           <div className="firstunder3leviaktivnost">
             <h1>Active days</h1>
             <h1>4🔥</h1>
