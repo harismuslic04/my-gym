@@ -412,7 +412,7 @@
   text-align: center;
   bottom: 1.6rem;
 }
-@media (max-width: 430px) {
+@media (max-width: 768px) {
   .firstmain {
     width: 100%;
   }

@@ -199,7 +199,7 @@
 /* Svi već postojeći stilovi */
 
 /* Dodatni upiti za vrlo male ekrane (npr. telefoni u vertikalnom položaju) */
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .adminheader {
     height: 3rem;
     margin-top: 1rem;

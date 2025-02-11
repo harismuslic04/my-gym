@@ -94,7 +94,7 @@
 .loginright button:hover {
   opacity: 0.7;
 }
-@media (max-width: 393px) {
+@media (max-width: 768px) {
   .loginMain {
     background-color: white;
   }

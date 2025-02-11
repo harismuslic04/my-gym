@@ -14,7 +14,7 @@
   left: 1rem;
   font-size: 2rem;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .homerating {
     position: relative;
     left: -2rem;
